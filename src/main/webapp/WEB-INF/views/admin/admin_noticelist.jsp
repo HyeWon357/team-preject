@@ -124,7 +124,7 @@
 
 
 							<tbody>
-								<c:forEach var="dto" items="${notice_list }">
+								<c:forEach var="dto" items="${admin_noticelist }">
 									<tr>
 										<td class="tnone">${dto.hNnum}</td>
 										<td class="left"><a
@@ -138,7 +138,6 @@
 
 						</table>
 					</div>
-
 
 
 					<div class="btnAreaList">

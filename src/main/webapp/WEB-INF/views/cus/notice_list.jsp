@@ -251,7 +251,7 @@
 										<col width="14%" class="tw25" />
 										<col width="14%" class="tnone" />
 									</colgroup>
-									
+
 									<thead>
 										<th scope="col" class="tnone">NO.</th>
 										<th scope="col">제목</th>
@@ -259,26 +259,32 @@
 										<th scope="col" class="tnone">조회수</th>
 									</thead>
 
-									
+
 									<tbody>
-									<c:forEach var="dto" items="${notice_list }">
-										<tr>
-											<td class="tnone">${dto.hNnum}</td>
-											<td class="left"><a href="notice_content?hNnum=${dto.hNnum}">
-													${dto.hNtitle}</a> <img src="../images/ico/ico_new.gif"
-												alt="NEW" /></td>
-											<td>${dto.hNday }</td>
-											<td class="tnone right">${dto.hNhit }</td>
-										</tr>	
-									</c:forEach>
+										<c:forEach var="dto" items="${notice_list }">
+											<tr>
+												<td class="tnone">${dto.hNnum}</td>
+												<td class="left"><a
+													href="notice_content?hNnum=${dto.hNnum}">
+														${dto.hNtitle}</a> <img src="../images/ico/ico_new.gif"
+													alt="NEW" /></td>
+												<td>${dto.hNday }</td>
+												<td class="tnone right">${dto.hNhit }</td>
+											</tr>
+										</c:forEach>
 									</tbody>
-									
+
 								</table>
 							</div>
 
-
-
 							<div class="btnAreaList">
+
+								<div class="bwright">
+									<ul>
+										<li><a href="admin_noticewrite.html" class="writeBtn">글쓰기</a></li>
+									</ul>
+								</div>
+
 								<!-- 페이징이동1 -->
 								<div class="allPageMoving1">
 

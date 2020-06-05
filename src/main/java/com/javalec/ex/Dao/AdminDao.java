@@ -9,7 +9,7 @@ public interface AdminDao {
 	public ArrayList<NDto> admin_noticelist();
 	public NDto admin_noticecontent(String hNnum);
 	public NDto admin_noticewrite(int hNnum);
-	public void noticewrite(String hNname, String hNtite, String hNcontent);
+	public void noticewrite(String hNname, String hNtitle, String hNcontent);
 	public void noticedelete(String hNnum);
 	public NDto admin_noticemodify(String hNnum);
 	public void noticemodify(String hNtitle, String hNcontent, int hNnum);

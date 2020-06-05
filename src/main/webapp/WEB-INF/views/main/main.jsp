@@ -91,6 +91,19 @@
 		});
 
 	});
+	
+	
+	//로그인 유,무
+	function login_check() {
+		
+		if(confirm("로그인이 필요한 페이지 입니다. 로그인 페이지로 이동 하시겠습니까?") == true) { //확인
+			location.href="#";
+
+		} else { //취소
+			return;
+		}
+		
+	}
 </script>
 </head>
 <body>
@@ -189,7 +202,7 @@
 						<ul>
 							<li><a href="#">LOGIN</a></li>
 							<li><a href="#">JOIN</a></li>
-							<li><a href="../mypage/inquiry_list">MY PAGE</a></li>
+							<li><a href="../mypage/inquiry_list" onclick="login_check()">MY PAGE</a></li>
 							<li><a href="#">CART</a></li>
 						</ul>
 

@@ -2,8 +2,9 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.javalec.ex.Dao.NDao">
+<mapper namespace="com.javalec.ex.Dao.UserDao">
     
+    <!-- notice -->
     <select id="notice_list" resultType="com.javalec.ex.Dto.NDto">
        select * from notice order by hNnum desc
     </select>
@@ -14,9 +15,16 @@
    	</select>
    	
    	
-   	<update id="upHit">
+   	<update id="notice_upHit">
    		update notice set hNhit=hNhit+1 where hNnum=#{param1}
    	</update>
    
-
+   
+	<!-- inquiry -->
+	<select id="inquiry_list" resultType="com.javalec.ex.Dto.IDto">
+		select * from inquiry order by hInum desc
+	</select>
+	
+	
+	
 </mapper>

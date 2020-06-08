@@ -119,7 +119,7 @@
 						</div>
 						<ul>
 							<li><a href="#">EVENT</a></li>
-							<li><a href="cus/notice_list">CUSTOMER</a></li>
+							<li><a href="../cus/notice_list">CUSTOMER</a></li>
 							<li><a href="#">COMMUNITY</a></li>
 						</ul>
 					</div>
@@ -127,7 +127,8 @@
 						<ul>
 							<li><a href="#">LOGIN</a></li>
 							<li><a href="#">JOIN</a></li>
-							<li><a href="#">MY PAGE</a></li>
+							<li><a href="../cus/inquiry_list" onclick="login_check()">MY
+									PAGE</a></li>
 							<li><a href="#">CART</a></li>
 						</ul>
 
@@ -209,7 +210,7 @@
 
 				<div id="location">
 					<ol>
-						<li><a href="#">HOME</a></li>
+						<li><a href="../main/main">HOME</a></li>
 						<li><a href="cus/notice_list">CUSTOMER</a></li>
 						<li class="last">1:1문의</li>
 					</ol>
@@ -235,50 +236,58 @@
 					<!-- contents -->
 					<div id="contents">
 						<div id="customer">
-							<h2>
-								<strong>1:1문의</strong><span>쟈뎅에 궁금하신 사항을 남겨주시면 답변해드립니다.</span>
-							</h2>
 
-							<div class="checkMt">
-								<table summary="분류, 제목, 상세내용, 첨부파일 순으로 궁금하신 점을 문의 하실수 있습니다."
-									class="checkTable" border="1" cellspacing="0">
-									<caption>1:1문의</caption>
-									<colgroup>
-										<col width="19%" class="tw30" />
-										<col width="*" />
-									</colgroup>
-									<tbody>
-										<tr>
-											<th scope="row"><span>분류</span></th>
-											<td><select>
-													<option value="">선택해주세요.</option>
-											</select></td>
-										</tr>
-										<tr>
-											<th scope="row"><span>제목</span></th>
-											<td><input type="text" class="wlong" /></td>
-										</tr>
-										<tr>
-											<th scope="row"><span>상세 내용</span></th>
-											<td><textarea class="tta"></textarea></td>
-										</tr>
-										<tr>
-											<th scope="row"><span>첨부파일</span></th>
-											<td><input type="file" class="fileType" /></td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
+							<form action="Uinquirywrite" method="post" enctype="multipart/form-data">
+								<h2>
+									<strong>1:1문의</strong><span>쟈뎅에 궁금하신 사항을 남겨주시면 답변해드립니다.</span>
+								</h2>
 
-							<!-- Btn Area -->
-							<div class="btnArea">
-								<div class="bCenter">
-									<ul>
-										<li><a href="#" class="nbtnbig">취소</a></li>
-										<li><a href="#" class="sbtnMini">확인</a></li>
-									</ul>
+								<div class="checkMt">
+									<table summary="분류, 제목, 상세내용, 첨부파일 순으로 궁금하신 점을 문의 하실수 있습니다."
+										class="checkTable" border="1" cellspacing="0">
+										<caption>1:1문의</caption>
+										<colgroup>
+											<col width="19%" class="tw30" />
+											<col width="*" />
+										</colgroup>
+
+										<tbody>
+											<tr>
+												<th scope="row"><span>분류</span></th>
+												<td><select>
+														<option value="">선택해주세요.</option>
+														<option value="">배송</option>
+														<option value="">상품</option>
+														<option value="">교환/환불</option>
+														<option value="">기타</option>
+												</select></td>
+											</tr>
+											<tr>
+												<th scope="row"><span>제목</span></th>
+												<td><input type="text" class="wlong" name="hItitle" maxlength=100/></td>
+											</tr>
+											<tr>
+												<th scope="row"><span>상세 내용</span></th>
+												<td><textarea class="tta" name="hIcontent" maxlength=1000></textarea></td>
+											</tr>
+											<tr>
+												<th scope="row"><span>첨부파일</span></th>
+												<td><input type="file" class="fileType" name="hIfile" maxlength=100 /></td>
+											</tr>
+										</tbody>
+									</table>
 								</div>
-							</div>
+
+								<!-- Btn Area -->
+								<div class="btnArea">
+									<div class="bCenter">
+										<ul>
+											<li><a href="inpuiry_list" class="nbtnbig">취소</a></li>
+											<input type="submit" class="sbtnMini" value="확인">
+										</ul>
+									</div>
+								</div>
+							</form>
 							<!-- //Btn Area -->
 
 						</div>

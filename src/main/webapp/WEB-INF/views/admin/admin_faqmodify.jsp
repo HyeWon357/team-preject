@@ -131,7 +131,7 @@
 			<div id="contents">
 				<div id="customer">
 
-					<form action="faqwrite" method="post"
+					<form action="faqmodify" method="post"
 						enctype="multipart/form-data">
 						<h2>
 							<strong>FAQ</strong><span>회원님들께서 자주 묻는 질문들을 모아 놓았습니다.</span>
@@ -151,9 +151,10 @@
 										<th scope="row"><span>분류</span></th>
 										<td><select>
 												<option value="">선택해주세요.</option>
-												<option value="">회원가입</option>
+												<option value="">배송</option>
 												<option value="">상품</option>
-												<option value="">주문</option>
+												<option value="">교환/환불</option>
+												<option value="">기타</option>
 										</select></td>
 									</tr>
 									<tr>

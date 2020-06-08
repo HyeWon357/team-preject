@@ -28,9 +28,21 @@
 <script type="text/javascript" src="../js/html5.js"></script>
 <script type="text/javascript" src="../js/respond.min.js"></script>
 <![endif]-->
-<script type="text/javascript">
 
+<script type="text/javascript">
+	//로그인 유,무
+	function login_check() {
+
+		if (confirm("로그인이 필요한 페이지 입니다. 로그인 페이지로 이동 하시겠습니까?") == true) { //확인
+			location.href = "#";
+
+		} else { //취소
+			return;
+		}
+
+	}
 </script>
+
 </head>
 <body>
 
@@ -127,8 +139,7 @@
 						<ul>
 							<li><a href="#">LOGIN</a></li>
 							<li><a href="#">JOIN</a></li>
-							<li><a href="../mypage/inquiry_list" onclick="login_check()">MY
-									PAGE</a></li>
+							<li><a href="../cus/inquiry_list" onclick="login_check()">MYPAGE</a></li>
 							<li><a href="#">CART</a></li>
 						</ul>
 
@@ -211,7 +222,7 @@
 				<div id="location">
 					<ol>
 						<li><a href="#">HOME</a></li>
-						<li><a href="#">MY PAGE</a></li>
+						<li><a href="../cus/inquiry_list" onclick="login_check()">MYPAGE</a></li>
 						<li class="last">1:1문의</li>
 					</ol>
 				</div>
@@ -271,7 +282,8 @@
 											<tr>
 												<td class="tnone">${dto.hInum}</td>
 												<td>상품</td>
-												<td class="left"><a href="inquiry_content?hInum=${dto.hInum}">${dto.hItitle}</a></td>
+												<td class="left"><a
+													href="inquiry_content?hInum=${dto.hInum}">${dto.hItitle}</a></td>
 												<td class="tnone">${dto.hIday}</td>
 												<td>
 													<ul class="state">
@@ -290,12 +302,12 @@
 
 							<div class="btnAreaList">
 
-								<div class="bwright">
+								<div class="bRight">
 									<ul>
-										<li><a href="#" class="writeBtn">글쓰기</a></li>
+										<li><a href="inquiry_write2" class="writeBtn">글쓰기</a></li>
 									</ul>
 								</div>
-
+								
 								<!-- 페이징이동1 -->
 								<div class="allPageMoving1">
 

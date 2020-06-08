@@ -119,7 +119,7 @@
 						</div>
 						<ul>
 							<li><a href="#">EVENT</a></li>
-							<li><a href="cus/notice_list">CUSTOMER</a></li>
+							<li><a href="../cus/notice_list">CUSTOMER</a></li>
 							<li><a href="#">COMMUNITY</a></li>
 						</ul>
 					</div>
@@ -127,7 +127,7 @@
 						<ul>
 							<li><a href="#">LOGIN</a></li>
 							<li><a href="#">JOIN</a></li>
-							<li><a href="#">MY PAGE</a></li>
+							<li><a href="../cus/inquiry_list" onclick="login_check()">MY PAGE</a></li>
 							<li><a href="#">CART</a></li>
 						</ul>
 

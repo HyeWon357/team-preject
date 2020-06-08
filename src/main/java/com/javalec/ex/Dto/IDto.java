@@ -5,7 +5,8 @@ import java.sql.Timestamp;
 public class IDto {
 	
 	int hInum;
-	String hIname;
+	String hIname; //user
+	String hIaname; //admin
 	String hItitle;
 	String hIcontent;
 	String hIfile;
@@ -16,10 +17,10 @@ public class IDto {
 		
 	}
 	
-	public IDto(int hInum, String hIname, String hItitle, String hIcontent, String hIfile, Timestamp hIday, String hIstep) {
-		
+	public IDto(int hInum, String hIname, String hIaname, String hItitle, String hIcontent, String hIfile, Timestamp hIday, String hIstep) {
 		this.hInum = hInum;
 		this.hIname = hIname;
+		this.hIaname = hIaname;
 		this.hItitle = hItitle;
 		this.hIcontent = hIcontent;
 		this.hIfile = hIfile;
@@ -41,6 +42,14 @@ public class IDto {
 
 	public void sethIname(String hIname) {
 		this.hIname = hIname;
+	}
+
+	public String gethIaname() {
+		return hIaname;
+	}
+
+	public void sethIaname(String hIaname) {
+		this.hIaname = hIaname;
 	}
 
 	public String gethItitle() {

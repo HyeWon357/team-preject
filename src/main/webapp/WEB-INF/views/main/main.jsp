@@ -202,7 +202,7 @@
 						<ul>
 							<li><a href="#">LOGIN</a></li>
 							<li><a href="#">JOIN</a></li>
-							<li><a href="../mypage/inquiry_list" onclick="login_check()">MY PAGE</a></li>
+							<li><a href="../cus/inquiry_list" onclick="login_check()">MY PAGE</a></li>
 							<li><a href="#">CART</a></li>
 						</ul>
 

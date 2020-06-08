@@ -142,15 +142,15 @@
 							<tbody>
 								<tr>
 									<th scope="row"><span>작성자</span></th>
-									<td><input type="text" class="wlong" name="hNname"/></td>
+									<td><input type="text" class="wlong" name="hNname" maxlength=20/></td>
 								</tr>
 								<tr>
 									<th scope="row"><span>제목</span></th>
-									<td><input type="text" class="wlong" name="hNtitle" /></td>
+									<td><input type="text" class="wlong" name="hNtitle" maxlength=100/></td>
 								</tr>
 								<tr>
 									<th scope="row"><span>상세 내용</span></th>
-									<td><textarea class="tta" name="hNcontent"></textarea></td>
+									<td><textarea class="tta" name="hNcontent" maxlength=1000></textarea></td>
 								</tr>
 							</tbody>
 						</table>

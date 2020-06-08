@@ -53,7 +53,7 @@ public class CustomerController {
 		
 		UserDao dao = sqlSession.getMapper(UserDao.class);
 		model.addAttribute("inquiry_list", dao.inquiry_list());
-		return "mypage/inquiry_list";
+		return "cus/inquiry_list";
 	}
 	
 	@RequestMapping("cus/inquiry_content")
@@ -61,7 +61,7 @@ public class CustomerController {
 		
 		UserDao dao = sqlSession.getMapper(UserDao.class);
 		model.addAttribute("inquiry_content", dao.inquiry_content(request.getParameter("hInum")));
-		return "mypage/inquiry_content";
+		return "cus/inquiry_content";
 	}
 	
 	@RequestMapping("cus/inquiry_write")
@@ -73,7 +73,7 @@ public class CustomerController {
 	@RequestMapping("cus/inquiry_write2")
 	public String inquiry_write2(Model model) {
 		
-		return "mypage/inquiry_write2";
+		return "cus/inquiry_write2";
 	}
 	
 	@RequestMapping("cus/Uinquirywrite")
@@ -85,12 +85,16 @@ public class CustomerController {
 	}
 	
 	
+	
 	//FAQ
 	@RequestMapping("cus/faq_list")
 	public String faq_list(Model model) {
 		
+		UserDao dao = sqlSession.getMapper(UserDao.class);
+		model.addAttribute("faq_list", dao.faq_list());
 		return "cus/faq_list";
 	}
+	
 	
 	//이용안내
 	@RequestMapping("cus/guide")

@@ -25,6 +25,11 @@
 <script type="text/javascript" src="../js/idangerous.swiper-2.1.min.js"></script>
 <script type="text/javascript" src="../js/jquery.anchor.js"></script>
 
+<script type="text/javascript">
+
+
+</script>
+
 </head>
 
 <body>
@@ -128,7 +133,7 @@
 									<tr>
 										<td class="tnone">${dto.hNnum}</td>
 										<td class="left"><a
-											href="notice_content?hNnum=${dto.hNnum}"> ${dto.hNtitle}</a>
+											href="admin_noticecontent?hNnum=${dto.hNnum}"> ${dto.hNtitle}</a>
 											<img src="../images/ico/ico_new.gif" alt="NEW" /></td>
 										<td>${dto.hNday }</td>
 										<td class="tnone right">${dto.hNhit }</td>
@@ -141,6 +146,12 @@
 
 
 					<div class="btnAreaList">
+						<div class="bRight">
+							<ul>
+								<li><a href="admin_noticewrite" class="writeBtn">글쓰기</a></li>
+							</ul>
+						</div>
+
 						<!-- 페이징이동1 -->
 						<div class="allPageMoving1">
 

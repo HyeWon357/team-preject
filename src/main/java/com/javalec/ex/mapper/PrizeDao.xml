@@ -1,0 +1,32 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.javalec.ex.dao.PrizeDao">
+<!-- 당첨자 발표 목록 -->
+   <select id="plist" resultType="com.javalec.ex.dto.PrizeDto">
+   	select * from prize order by prize_id desc
+   </select>
+   
+<!-- 당첨자 발표 내용 -->
+   <select id="prize_view" resultType="com.javalec.ex.dto.PrizeDto">
+   	select * from prize where prize_id=#{param1}
+   </select>
+   <update id="pUpHit">
+   	update prize set prize_hit=prize_hit+1 where prize_id=#{param1}
+   </update>
+   
+<!-- 이전글,다음글 -->
+	<select id="prize_prev" resultType="com.javalec.ex.dto.PrizeDto">
+	select * from
+	(select rownum rnum,prize_id,admin,prize_title,prize_content,prize_file,prize_date,prize_hit from
+	(select * from prize order by prize_id desc))
+	where prize_id=(select max(prize_id) from prize where prize_id &lt; #{param1})
+	</select>
+	<select id="prize_next" resultType="com.javalec.ex.dto.PrizeDto">
+	select * from
+	(select rownum rnum,prize_id,admin,prize_title,prize_content,prize_file,prize_date,prize_hit from
+	(select * from prize order by prize_id desc))
+	where prize_id=(select max(prize_id) from prize where prize_id &gt; #{param1})
+	</select>
+</mapper>

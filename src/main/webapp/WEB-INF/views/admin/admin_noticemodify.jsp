@@ -177,7 +177,7 @@
 							<div class="bCenter">
 								<ul>
 									<li><a href="admin_noticelist" class="nbtnbig">취소</a></li>
-									<input type="submit" class="sbtnMini" value="확인">
+									<input type="submit" class="sbtnMini" value="확인" onclick="modify_check()">
 								</ul>
 							</div>
 						</div>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -22,6 +24,10 @@
 <script type="text/javascript" src="../js/idangerous.swiper-2.1.min.js"></script>
 <script type="text/javascript" src="../js/jquery.anchor.js"></script>
 
+<script type="text/javascript">
+	
+</script>
+
 </head>
 
 <body>
@@ -33,32 +39,21 @@
 			<span>관리자 (GMT+9:00) Seoul </span> <img
 				src="http://lmsenterprise2019.itmap.co.kr/_admin/image/logout.png"
 				alt="">
-
-			<!-- <table class="header-tb">
-        <tr>
-          <td class="select">
-            <img src="http://lmsenterprise2019.itmap.co.kr/_admin/image/KOR.png" alt="">
-            <span>한국어</span>
-          </td>
-          <td class="arrow">
-            <div class="separator"></div>
-            <span>▼</span>
-          </td>
-        </tr>
-      </table>
-
-      <table class="header-tb">
-        <tr>
-          <td class="select">
-            <span>LMS 매뉴얼</span>
-          </td>
-          <td class="arrow">
-            <div class="separator"></div>
-            <span>▼</span>
-          </td>
-        </tr>
-      </table> -->
 		</div>
+
+		<script type="text/javascript">
+		//삭제확인
+		function delete_check() {
+			
+			if(confirm("정말 삭제하시겠습니까?") == true) { //확인
+				document.form.submit();
+			
+			}else { //취소
+				return;
+			}
+		}
+		
+		</script>
 	</header>
 
 	<nav>
@@ -120,31 +115,29 @@
 
 						<!-- FAQ -->
 						<div class="faqList">
-							<ul>
-								<!-- list -->
-								<li><a href="javascript:;" class="faqbtn">
-										<div class="question">
-											<div class="blet">Q</div>
-											<div class="category">상품</div>
-											<div class="title">주문 상품의 수량을 변경하고 싶어요.</div>
-										</div>
-								</a>
 
-									<div class="faqanswer">
-										<div class="faqbox">
-											<div class="blet">A</div>
-											<div class="text">
-												<strong><u>소비자상담실(02-546-3881)</u></strong>로 연락 주시면 가능 여부에
-												관하여 답변드리고 있습니다. 연락 주시면 가능 여부에 관하여 답변드리고 있습니다. 연락 주시면 가능 여부에
-												관하여 답변드리고 있습니다. 연락 주시면 가능 여부에 관하여 답변드리고 있습니다. 연락 주시면 가능 여부에
-												관하여 답변드리고 있습니다. 연락 주시면 가능 여부에 관하여 답변드리고 있습니다.
+							<c:forEach var="dto" items="${admin_faqlist}">
+								<ul>
+									<!-- list -->
+									<li><a href="javascript:;" class="faqbtn">
+											<div class="question">
+												<div class="blet">Q</div>
+												<div class="category">상품</div>
+												<div class="title">${dto.hFtitle }</div>
 											</div>
-										</div>
-									</div></li>
-								<!-- //list -->
+									</a>
+
+										<div class="faqanswer">
+											<div class="faqbox">
+												<div class="blet">A</div>
+												<div class="text">${dto.hFcontent}</div>
+											</div>
+										</div></li>
+									<!-- //list -->
 						</div>
 						</li>
 						</ul>
+						</c:forEach>
 					</div>
 					<!-- //FAQ -->
 
@@ -152,7 +145,9 @@
 					<div class="btnAreaList">
 						<div class="bwright">
 							<ul>
-								<li><a href="admin_noticewrite.html" class="writeBtn">글쓰기</a></li>
+								<li><a href="admin_faqwrite" class="writeBtn">글쓰기</a></li>
+								<li><a href="admin_faqmodify" class="nbtnbig mw">수정</a></li>
+								<li><a href="faqdelete" class="nbtnbig mw" onclick="delete_check()">삭제</a></li>
 							</ul>
 						</div>
 

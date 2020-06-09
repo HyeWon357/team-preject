@@ -6,10 +6,12 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.javalec.ex.Dao.AdminDao;
+import com.javalec.ex.Dto.FDto;
 import com.javalec.ex.Dto.NDto;
 
 @Controller
@@ -82,12 +84,16 @@ public class AdminController {
 	@RequestMapping("admin/admin_inquirylist")
 	public String admin_inquirylist(Model model) {
 		
+		AdminDao dao = sqlSession.getMapper(AdminDao.class);
+		model.addAttribute("admin_inquirylist", dao.admin_inquirylist());
 		return "admin/admin_inquirylist";
 	}
 	
 	@RequestMapping("admin/admin_inquirycontent")
-	public String admin_inquirycontent(Model model) {
+	public String admin_inquirycontent(HttpServletRequest request, Model model) {
 		
+		AdminDao dao = sqlSession.getMapper(AdminDao.class);
+		model.addAttribute("admin_inquirycontent", dao.admin_inquirycontent(request.getParameter("hInum")));
 		return "admin/admin_inquirycontent";
 	}
 	
@@ -99,10 +105,12 @@ public class AdminController {
 	
 	
 	
-	
+	//faq
 	@RequestMapping("admin/admin_faqlist")
 	public String admin_faqlist(Model model) {
 		
+		AdminDao dao = sqlSession.getMapper(AdminDao.class);
+		model.addAttribute("admin_faqlist", dao.admin_faqlist());
 		return "admin/admin_faqlist";
 	}
 	
@@ -110,6 +118,14 @@ public class AdminController {
 	public String admin_faqwrite(Model model) {
 		
 		return "admin/admin_faqwrite";
+	}
+	
+	@RequestMapping("admin/faqwrite")
+	public String faqwrite(FDto fdto, Model model) {
+		
+		AdminDao dao = sqlSession.getMapper(AdminDao.class);
+		dao.faqwrite(fdto.gethFname(), fdto.gethFtitle(), fdto.gethFcontent());
+		return "redirect:admin_faqlist";
 	}
 	
 }

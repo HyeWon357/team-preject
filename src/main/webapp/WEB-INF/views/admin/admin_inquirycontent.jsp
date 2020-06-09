@@ -35,31 +35,21 @@
 				src="http://lmsenterprise2019.itmap.co.kr/_admin/image/logout.png"
 				alt="">
 
-			<!-- <table class="header-tb">
-        <tr>
-          <td class="select">
-            <img src="http://lmsenterprise2019.itmap.co.kr/_admin/image/KOR.png" alt="">
-            <span>한국어</span>
-          </td>
-          <td class="arrow">
-            <div class="separator"></div>
-            <span>▼</span>
-          </td>
-        </tr>
-      </table>
-
-      <table class="header-tb">
-        <tr>
-          <td class="select">
-            <span>LMS 매뉴얼</span>
-          </td>
-          <td class="arrow">
-            <div class="separator"></div>
-            <span>▼</span>
-          </td>
-        </tr>
-      </table> -->
 		</div>
+
+		<script type="text/javascript">
+			//삭제확인
+			function delete_check() {
+
+				if (confirm("정말 삭제하시겠습니까?") == true) { //확인
+					document.form.submit();
+
+				} else { //취소
+					return;
+				}
+			}
+		</script>
+		
 	</header>
 
 	<nav>
@@ -128,30 +118,17 @@
 					<h2>
 						<strong>1:1문의</strong><span>쟈뎅에 궁금하신 사항을 남겨주시면 답변해드립니다.</span>
 					</h2>
-
-					<div class="myInfo">
-						<ul>
-							<li class="info"><strong>가나다</strong> 님의 정보를 한눈에 확인하세요.</li>
-							<li>보유 쿠폰<br /> <span class="num">199</span> <span
-								class="unit">장</span></li>
-							<li class="point">내 포인트<br /> <span class="num">100,000</span>
-								<span class="unit">P</span></li>
-							<li class="last">진행중인 주문<br /> <span class="num">199</span>
-								<span class="unit">건</span></li>
-						</ul>
-					</div>
-
 					<div class="viewDiv">
 						<div class="viewHead">
 							<div class="subject">
 								<ul>
 									<li class="cate">[기타]</li>
-									<li>문의 드립니다.</li>
+									<li>${admin_inquirycontent.hItitle }</li>
 								</ul>
 							</div>
 							<div class="day">
 								<p class="txt">
-									등록일<span>14.01.28</span>
+									등록일<span>${admin_inquirycontent.hIday }</span>
 								</p>
 								<p class="btn">
 									<span class="obtnMini">답변완료</span>
@@ -159,8 +136,7 @@
 							</div>
 						</div>
 
-						<div class="viewContents">
-							문의드립니다.<br /> 빠른 답변 부탁드립니다
+						<div class="viewContents">${admin_inquirycontent.hIcontent }
 						</div>
 					</div>
 
@@ -169,19 +145,11 @@
 						<div class="inbox">
 							<div class="aname">
 								<p>
-									담당자 <span>[2014-03-04&nbsp;&nbsp;15:01:59]</span>
+									담당자 <span>${admin_inquirycontent.hIday }</span>
 								</p>
 							</div>
 
-							<div class="atxt">쟈뎅 커피를 사랑해주셔서 감사합니다. 앞으로도 노력하는 쟈뎅이 되겠습니다.
-								감사합니다. 쟈뎅 커피를 사랑해주셔서 감사합니다. 앞으로도 노력하는 쟈뎅이 되겠습니다. 감사합니다. 쟈뎅 커피를
-								사랑해주셔서 감사합니다. 앞으로도 노력하는 쟈뎅이 되겠습니다. 감사합니다. 쟈뎅 커피를 사랑해주셔서 감사합니다.
-								앞으로도 노력하는 쟈뎅이 되겠습니다. 감사합니다. 쟈뎅 커피를 사랑해주셔서 감사합니다. 앞으로도 노력하는 쟈뎅이
-								되겠습니다. 감사합니다. 쟈뎅 커피를 사랑해주셔서 감사합니다. 앞으로도 노력하는 쟈뎅이 되겠습니다. 감사합니다.
-								쟈뎅 커피를 사랑해주셔서 감사합니다. 앞으로도 노력하는 쟈뎅이 되겠습니다. 감사합니다. 쟈뎅 커피를 사랑해주셔서
-								감사합니다. 앞으로도 노력하는 쟈뎅이 되겠습니다. 감사합니다. 쟈뎅 커피를 사랑해주셔서 감사합니다. 앞으로도
-								노력하는 쟈뎅이 되겠습니다. 감사합니다. 쟈뎅 커피를 사랑해주셔서 감사합니다. 앞으로도 노력하는 쟈뎅이 되겠습니다.
-								감사합니다.</div>
+							<div class="atxt">${admin_inquirycontent.hIstep }</div>
 						</div>
 					</div>
 					<!-- //답변 -->
@@ -223,10 +191,11 @@
 					<div class="btnArea">
 						<div class="bRight">
 							<ul>
-								<li><a href="admin_inquirylist.html" class="sbtnMini mw">목록</a></li>
-								<li><a href="admin_inquirywrite.html" class="writeBtn">글쓰기</a></li>
-								<li><a href="#" class="nbtnbig mw">수정</a></li>
-								<li><a href="#" class="nbtnbig mw">삭제</a></li>
+								<li><a href="admin_inquirylist" class="sbtnMini mw">목록</a></li>
+								<li><a href="admin_inquirywrite" class="writeBtn">글쓰기</a></li>
+								<li><a href="admin_noticemodify" class="nbtnbig mw">수정</a></li>
+								<li><a href="noticedelete" class="nbtnbig mw"
+									onclick="delete_check()">삭제</a></li>
 							</ul>
 						</div>
 					</div>

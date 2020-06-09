@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -119,7 +121,7 @@
 						</div>
 						<ul>
 							<li><a href="#">EVENT</a></li>
-							<li><a href="cus/notice_list">CUSTOMER</a></li>
+							<li><a href="../cus/notice_list">CUSTOMER</a></li>
 							<li><a href="#">COMMUNITY</a></li>
 						</ul>
 					</div>
@@ -127,7 +129,8 @@
 						<ul>
 							<li><a href="#">LOGIN</a></li>
 							<li><a href="#">JOIN</a></li>
-							<li><a href="#">MY PAGE</a></li>
+							<li><a href="../cus/inquiry_list" onclick="login_check()">MY
+									PAGE</a></li>
 							<li><a href="#">CART</a></li>
 						</ul>
 
@@ -250,121 +253,118 @@
 
 							<!-- FAQ -->
 							<div class="faqList">
-								<ul>
-									<!-- list -->
-									<li><a href="javascript:;" class="faqbtn">
-											<div class="question">
-												<div class="blet">Q</div>
-												<div class="category">상품</div>
-												<div class="title">주문 상품의 수량을 변경하고 싶어요.</div>
-											</div>
-									</a>
-
-										<div class="faqanswer">
-											<div class="faqbox">
-												<div class="blet">A</div>
-												<div class="text">
-													<strong><u>소비자상담실(02-546-3881)</u></strong>로 연락 주시면 가능 여부에
-													관하여 답변드리고 있습니다. 연락 주시면 가능 여부에 관하여 답변드리고 있습니다. 연락 주시면 가능 여부에
-													관하여 답변드리고 있습니다. 연락 주시면 가능 여부에 관하여 답변드리고 있습니다. 연락 주시면 가능 여부에
-													관하여 답변드리고 있습니다. 연락 주시면 가능 여부에 관하여 답변드리고 있습니다.
+								<c:forEach var="dto" items="${faq_list}">
+									<ul>
+										<!-- list -->
+										<li><a href="javascript:;" class="faqbtn">
+												<div class="question">
+													<div class="blet">Q</div>
+													<div class="category">상품</div>
+													<div class="title">${dto.hFtitle }</div>
 												</div>
-											</div>
-										</div></li>
-									<!-- //list -->
+										</a>
 
-										</div></li>
+											<div class="faqanswer">
+												<div class="faqbox">
+													<div class="blet">A</div>
+													<div class="text">${dto.hFcontent}</div>
+												</div>
+											</div></li>
+										<!-- //list -->
+							</div>
+							</li>
+							</ul>
+							</c:forEach>
+						</div>
+						<!-- //FAQ -->
+
+
+						<div class="btnAreaList">
+							<!-- 페이징이동1 -->
+							<div class="allPageMoving1">
+
+								<a href="#" class="n"><img src="../images/btn/btn_pre2.gif"
+									alt="처음으로" /></a><a href="#" class="pre"><img
+									src="../images/btn/btn_pre1.gif" alt="앞페이지로" /></a> <strong>1</strong>
+								<a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a
+									href="#">5</a> <a href="#" class="next"><img
+									src="../images/btn/btn_next1.gif" alt="뒤페이지로" /></a><a href="#"
+									class="n"><img src="../images/btn/btn_next2.gif"
+									alt="마지막페이지로" /></a>
+
+							</div>
+							<!-- //페이징이동1 -->
+						</div>
+
+						<div class="searchWrap">
+							<div class="search">
+								<ul>
+									<li class="web"><img src="../images/txt/txt_search.gif"
+										alt="search" /></li>
+									<li class="se"><select>
+											<option value="" />제목
+											</option>
+									</select></li>
+									<li><input type="text" class="searchInput" /></li>
+									<li class="web"><a href="#"><img
+											src="../images/btn/btn_search.gif" alt="검색" /></a></li>
+									<li class="mobile"><a href="#"><img
+											src="../images/btn/btn_search_m.gif" alt="검색" /></a></li>
 								</ul>
 							</div>
-							<!-- //FAQ -->
-
-
-							<div class="btnAreaList">
-								<!-- 페이징이동1 -->
-								<div class="allPageMoving1">
-
-									<a href="#" class="n"><img src="../images/btn/btn_pre2.gif"
-										alt="처음으로" /></a><a href="#" class="pre"><img
-										src="../images/btn/btn_pre1.gif" alt="앞페이지로" /></a> <strong>1</strong>
-									<a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a
-										href="#">5</a> <a href="#" class="next"><img
-										src="../images/btn/btn_next1.gif" alt="뒤페이지로" /></a><a href="#"
-										class="n"><img src="../images/btn/btn_next2.gif"
-										alt="마지막페이지로" /></a>
-
-								</div>
-								<!-- //페이징이동1 -->
-							</div>
-
-							<div class="searchWrap">
-								<div class="search">
-									<ul>
-										<li class="web"><img src="../images/txt/txt_search.gif"
-											alt="search" /></li>
-										<li class="se"><select>
-												<option value="" />제목
-												</option>
-										</select></li>
-										<li><input type="text" class="searchInput" /></li>
-										<li class="web"><a href="#"><img
-												src="../images/btn/btn_search.gif" alt="검색" /></a></li>
-										<li class="mobile"><a href="#"><img
-												src="../images/btn/btn_search_m.gif" alt="검색" /></a></li>
-									</ul>
-								</div>
-							</div>
-
 						</div>
-					</div>
-					<!-- //contents -->
 
-				</div>
-			</div>
-			<!-- //container -->
-
-
-
-
-			<div id="footerWrap">
-				<div id="footer">
-					<div id="fnb">
-						<ul>
-							<li class="left"><a href="#">개인정보취급방침</a></li>
-							<li><a href="#">이용약관</a></li>
-							<li class="left"><a href="#">이메일무단수집거부</a></li>
-							<li><a href="#">고객센터</a></li>
-							<li class="left brand"><a href="#">쟈뎅 브랜드 사이트</a></li>
-						</ul>
-					</div>
-
-					<div id="finfo">
-						<div id="flogo">
-							<img src="../images/txt/flogo.gif"
-								alt="JARDIN THE COFFEE CREATOR, SINCE 1984" />
-						</div>
-						<address>
-							<ul>
-								<li>㈜쟈뎅</li>
-								<li>대표자 윤영노</li>
-								<li class="tnone">주소 서울시 강남구 논현동 4-21번지 영 빌딩</li>
-								<li class="webnone">소비자상담실 02)546-3881</li>
-								<li>사업자등록번호 211-81-24727</li>
-								<li class="tnone">통신판매신고 제 강남 – 1160호</li>
-								<li class="copy">COPYRIGHT © 2014 JARDIN <span>ALL
-										RIGHTS RESERVED.</span></li>
-							</ul>
-						</address>
-
-						<div id="inicis">
-							<img src="../images/ico/ico_inicis.png" alt="이니시스 결제시스템" />
-						</div>
 					</div>
 				</div>
+				<!-- //contents -->
+
 			</div>
-
-
-
 		</div>
+		<!-- //container -->
+
+
+
+
+		<div id="footerWrap">
+			<div id="footer">
+				<div id="fnb">
+					<ul>
+						<li class="left"><a href="#">개인정보취급방침</a></li>
+						<li><a href="#">이용약관</a></li>
+						<li class="left"><a href="#">이메일무단수집거부</a></li>
+						<li><a href="#">고객센터</a></li>
+						<li class="left brand"><a href="#">쟈뎅 브랜드 사이트</a></li>
+					</ul>
+				</div>
+
+				<div id="finfo">
+					<div id="flogo">
+						<img src="../images/txt/flogo.gif"
+							alt="JARDIN THE COFFEE CREATOR, SINCE 1984" />
+					</div>
+					<address>
+						<ul>
+							<li>㈜쟈뎅</li>
+							<li>대표자 윤영노</li>
+							<li class="tnone">주소 서울시 강남구 논현동 4-21번지 영 빌딩</li>
+							<li class="webnone">소비자상담실 02)546-3881</li>
+							<li>사업자등록번호 211-81-24727</li>
+							<li class="tnone">통신판매신고 제 강남 – 1160호</li>
+							<li class="copy">COPYRIGHT © 2014 JARDIN <span>ALL
+									RIGHTS RESERVED.</span></li>
+						</ul>
+					</address>
+
+					<div id="inicis">
+						<img src="../images/ico/ico_inicis.png" alt="이니시스 결제시스템" />
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+	</div>
 	</div>
 </body>
 </html>

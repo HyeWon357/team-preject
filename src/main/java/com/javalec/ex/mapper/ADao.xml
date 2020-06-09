@@ -4,10 +4,10 @@
 
 <mapper namespace="com.javalec.ex.Dao.AdminDao">
     
+    <!-- 공지사항 -->
     <select id="admin_noticelist" resultType="com.javalec.ex.Dto.NDto">
        select * from notice order by hNnum desc
     </select>
-   	
    	
    	<select id="admin_noticecontent" resultType="com.javalec.ex.Dto.NDto">
    		select * from notice where hNnum=#{param1}
@@ -28,6 +28,24 @@
 	<update id="noticemodify">
 		update notice set hNtitle=#{param1}, hNcontent=#{param2} where hNnum=#{param3}
 	</update>
+	
+	
+	
+	<!-- 1:1문의 -->
+	<select id="admin_inpuirylist" resultType="com.javalec.ex.Dto.IDto">
+		select * from inquiry order by hInum desc
+	</select>
+	
+	<select id="admin_inquirycontent" resultType="com.javalec.ex.Dto.IDto">
+		select * from inquiry where hInum=#{param1}
+	</select>
+	
+	
+	
+	<!-- faq -->
+	<select id="admin_faqlist" resultType="com.javalec.ex.Dto.FDto">
+		select * from faq order by hFnum desc
+	</select>
 	
 	
 </mapper>

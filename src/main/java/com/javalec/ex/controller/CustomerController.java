@@ -8,7 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.javalec.ex.Dao.NDao;
+import com.javalec.ex.Dao.AdminDao;
+import com.javalec.ex.Dao.UserDao;
+import com.javalec.ex.Dto.IDto;
 
 @Controller
 public class CustomerController {
@@ -17,18 +19,19 @@ public class CustomerController {
 	SqlSession sqlSession;
 	
 	
-	
-	//공지사항
 	@RequestMapping("main/main")
 	public String main(Model model) {
 		
 		return "main/main";
 	}
+
 	
+	
+	//공지사항
 	@RequestMapping("cus/notice_list")
 	public String notice_list(Model model) {
 		
-		NDao dao = sqlSession.getMapper(NDao.class);
+		UserDao dao = sqlSession.getMapper(UserDao.class);
 		model.addAttribute("notice_list", dao.notice_list());
 		return "cus/notice_list";
 	}
@@ -36,8 +39,8 @@ public class CustomerController {
 	@RequestMapping("cus/notice_content")
 	public String notice_content(HttpServletRequest request, Model model) {
 		
-		NDao dao = sqlSession.getMapper(NDao.class);
-		dao.upHit(request.getParameter("hNnum"));
+		UserDao dao = sqlSession.getMapper(UserDao.class);
+		dao.notice_upHit(request.getParameter("hNnum"));
 		model.addAttribute("notice_content",dao.notice_content(request.getParameter("hNnum")));
 		return "cus/notice_content";
 	}
@@ -45,37 +48,53 @@ public class CustomerController {
 	
 	
 	//1:1문의
-	@RequestMapping("mypage/notice_list")
+	@RequestMapping("cus/inquiry_list")
 	public String inquiry_list(Model model) {
 		
-		return "mypage/notice_list";
+		UserDao dao = sqlSession.getMapper(UserDao.class);
+		model.addAttribute("inquiry_list", dao.inquiry_list());
+		return "cus/inquiry_list";
 	}
 	
-	@RequestMapping("mypage/inquiry_content")
-	public String inquiry_content(Model model) {
+	@RequestMapping("cus/inquiry_content")
+	public String inquiry_content(HttpServletRequest request, Model model) {
 		
-		return "mypage/inquiry_content";
+		UserDao dao = sqlSession.getMapper(UserDao.class);
+		model.addAttribute("inquiry_content", dao.inquiry_content(request.getParameter("hInum")));
+		return "cus/inquiry_content";
 	}
 	
 	@RequestMapping("cus/inquiry_write")
-	public String inquiry_write (Model model) {
+	public String inquiry_write (IDto idto, Model model) {
 		
 		return "cus/inquiry_write";
 	}
 	
-	@RequestMapping("mypage/inquiry_write2")
+	@RequestMapping("cus/inquiry_write2")
 	public String inquiry_write2(Model model) {
 		
-		return "mypage/inquiry_write2";
+		return "cus/inquiry_write2";
 	}
+	
+	@RequestMapping("cus/Uinquirywrite")
+	public String Uinquirywrite (IDto idto, Model model) {
+		
+		UserDao dao = sqlSession.getMapper(UserDao.class);
+		dao.Uinquirywrite(idto.gethIname(), idto.gethItitle(), idto.gethIcontent());
+		return "redirect:inquiry_content";
+	}
+	
 	
 	
 	//FAQ
 	@RequestMapping("cus/faq_list")
 	public String faq_list(Model model) {
 		
+		UserDao dao = sqlSession.getMapper(UserDao.class);
+		model.addAttribute("faq_list", dao.faq_list());
 		return "cus/faq_list";
 	}
+	
 	
 	//이용안내
 	@RequestMapping("cus/guide")

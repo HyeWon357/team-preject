@@ -63,31 +63,6 @@
 			<span>관리자 (GMT+9:00) Seoul </span> <img
 				src="http://lmsenterprise2019.itmap.co.kr/_admin/image/logout.png"
 				alt="">
-
-			<!-- <table class="header-tb">
-        <tr>
-          <td class="select">
-            <img src="http://lmsenterprise2019.itmap.co.kr/_admin/image/KOR.png" alt="">
-            <span>한국어</span>
-          </td>
-          <td class="arrow">
-            <div class="separator"></div>
-            <span>▼</span>
-          </td>
-        </tr>
-      </table>
-
-      <table class="header-tb">
-        <tr>
-          <td class="select">
-            <span>LMS 매뉴얼</span>
-          </td>
-          <td class="arrow">
-            <div class="separator"></div>
-            <span>▼</span>
-          </td>
-        </tr>
-      </table> -->
 		</div>
 	</header>
 
@@ -167,15 +142,15 @@
 							<tbody>
 								<tr>
 									<th scope="row"><span>작성자</span></th>
-									<td><input type="text" class="wlong" name="hNname"/></td>
+									<td><input type="text" class="wlong" name="hNname" maxlength=20/></td>
 								</tr>
 								<tr>
 									<th scope="row"><span>제목</span></th>
-									<td><input type="text" class="wlong" name="hNtitle" /></td>
+									<td><input type="text" class="wlong" name="hNtitle" maxlength=100/></td>
 								</tr>
 								<tr>
 									<th scope="row"><span>상세 내용</span></th>
-									<td><textarea class="tta" name="hNcontent"></textarea></td>
+									<td><textarea class="tta" name="hNcontent" maxlength=1000></textarea></td>
 								</tr>
 							</tbody>
 						</table>

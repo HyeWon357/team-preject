@@ -1,0 +1,16 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.javalec.ex.dao.EventReplyDao">
+<!-- 댓글 작성 -->
+	<insert id="eventReplyW">
+		insert into event_reply(eventReply_id,event_id,eventReply_user,eventReply_pw,eventReply_content) values(
+		event_reply_seq.nextval,#{event_id},#{eventReply_user},'<if test="#{eventReply_pw}==null"></if>',#{eventReply_content})
+	</insert>
+	
+<!-- 댓글 삭제 -->
+	<delete id="eventReplyD">
+		delete from event_reply where eventReply_id=#{param1}
+	</delete>
+</mapper>

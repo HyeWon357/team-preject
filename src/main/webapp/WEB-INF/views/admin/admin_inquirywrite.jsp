@@ -34,31 +34,6 @@
 			<span>관리자 (GMT+9:00) Seoul </span> <img
 				src="http://lmsenterprise2019.itmap.co.kr/_admin/image/logout.png"
 				alt="">
-
-			<!-- <table class="header-tb">
-        <tr>
-          <td class="select">
-            <img src="http://lmsenterprise2019.itmap.co.kr/_admin/image/KOR.png" alt="">
-            <span>한국어</span>
-          </td>
-          <td class="arrow">
-            <div class="separator"></div>
-            <span>▼</span>
-          </td>
-        </tr>
-      </table>
-
-      <table class="header-tb">
-        <tr>
-          <td class="select">
-            <span>LMS 매뉴얼</span>
-          </td>
-          <td class="arrow">
-            <div class="separator"></div>
-            <span>▼</span>
-          </td>
-        </tr>
-      </table> -->
 		</div>
 	</header>
 
@@ -126,53 +101,60 @@
 			<div id="contents">
 				<div id="mypage">
 
-					<div class="checkDiv">
-						<table summary="분류, 제목, 상세내용, 첨부파일 순으로 궁금하신 점을 문의 하실수 있습니다."
-							class="checkTable" border="1" cellspacing="0">
-							<caption>1:1문의</caption>
-							<colgroup>
-								<col width="19%" class="tw30" />
-								<col width="*" />
-							</colgroup>
-							<tbody>
-								<tr>
-									<th scope="row"><span>작성자</span></th>
-									<td><input type="text" class="wlong" /></td>
-								</tr>
-								<tr>
-									<th scope="row"><span>분류</span></th>
-									<td><select>
-											<option value="">선택해주세요.</option>
-											<option value="">배송</option>
-											<option value="">상품</option>
-											<option value="">교환/환불</option>
-											<option value="">기타</option>
-									</select></td>
-								</tr>
-								<tr>
-									<th scope="row"><span>제목</span></th>
-									<td><input type="text" class="wlong" /></td>
-								</tr>
-								<tr>
-									<th scope="row"><span>상세 내용</span></th>
-									<td><textarea class="tta"></textarea></td>
-								</tr>
+					<form action="Uinquirywrite" method="post">
 
-							</tbody>
-						</table>
-					</div>
+						<div class="checkDiv">
+							<table summary="분류, 제목, 상세내용, 첨부파일 순으로 궁금하신 점을 문의 하실수 있습니다."
+								class="checkTable" border="1" cellspacing="0">
+								<caption>1:1문의</caption>
+								<colgroup>
+									<col width="19%" class="tw30" />
+									<col width="*" />
+								</colgroup>
+								<tbody>
+									<tr>
+										<th scope="row"><span>작성자</span></th>
+										<td><input type="text" class="wlong" /></td>
+									</tr>
+									<tr>
+										<th scope="row"><span>분류</span></th>
+										<td><select>
+												<option value="">선택해주세요.</option>
+												<option value="">배송</option>
+												<option value="">상품</option>
+												<option value="">교환/환불</option>
+												<option value="">기타</option>
+										</select></td>
+									</tr>
+									
+									<tr>
+										<th scope="row"><span>작성자</span></th>
+										<td><input type="text" class="wlong" maxlength=20 /></td>
+									</tr>
 
-					<!-- Btn Area -->
-					<div class="btnArea">
-						<div class="bCenter">
-							<ul>
-								<li><a href="admin_inquirylist.html" class="nbtnbig">취소</a></li>
-								<li><a href="#" class="sbtnMini">확인</a></li>
-							</ul>
+									<tr>
+										<th scope="row"><span>제목</span></th>
+										<td><input type="text" class="wlong" maxlength=100 /></td>
+									</tr>
+									<tr>
+										<th scope="row"><span>상세 내용</span></th>
+										<td><textarea class="tta" maxlength=1000></textarea></td>
+									</tr>
+
+								</tbody>
+							</table>
 						</div>
-					</div>
-					<!-- //Btn Area -->
 
+						<!-- Btn Area -->
+						<div class="btnArea">
+							<div class="bCenter">
+								<ul>
+									<li><a href="admin_inquirylist.html" class="nbtnbig">취소</a></li>
+									<input type="submit" class="sbtnMini" value="확인">
+								</ul>
+							</div>
+						</div>
+						<!-- //Btn Area -->
 				</div>
 			</div>
 			<!-- //contents -->

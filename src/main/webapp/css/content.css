@@ -29,6 +29,16 @@
 #contents h2 strong{width:100%; display:block; font-size:40px; font-weight:600; color:#444; margin:0 0 10px 0;}
 #contents h2 span{width:100%; display:block; font-size:14px; color:#888; font-weight:normal; line-height:1.2; word-break:keep-all;}
 
+#contents2{float:left; width:1000px;}
+#contents2 h2{height:86px; text-align:center; border-bottom:1px #5b524d solid;}
+#contents2 h2 strong{width:100%; display:block; font-size:40px; font-weight:600; color:#444; margin:0 0 10px 0;}
+#contents2 h2 span{width:100%; display:block; font-size:14px; color:#888; font-weight:normal; line-height:1.2; word-break:keep-all;}
+
+#adcontents2{float:left; width:670px;}
+#adcontents2 h2{height:86px; text-align:center; border-bottom:1px #5b524d solid;}
+#adcontents2 h2 strong{width:100%; display:block; font-size:40px; font-weight:600; color:#444; margin:0 0 10px 0;}
+#adcontents2 h2 span{width:100%; display:block; font-size:14px; color:#888; font-weight:normal; line-height:1.2; word-break:keep-all;}
+
 /** MAXCONTENTS **/
 #maxcontents{float:left; width:100%;}
 #maxcontents h2{height:57px; border-bottom:2px #f7703c solid;}
@@ -374,6 +384,8 @@
 .replyBox ul li.btn .rebtn:hover{color:#777;}
 .replynum{width:82px; height:20px; line-height:20px; border:1px #d9d9d9 solid; padding:0 0 0 5px;}
 .finReply{margin:50px 0 0 0;}
+#close_repleBox{width:100%; height:30px; border-bottom:1px #d9d9d9 solid; margin-top:10px;}
+#close_reple{text-align: center; font-size:13px; padding-top:3px;}
 
 /* AMOUNT */
 .amount{position:relative; width:100%; border:6px #999 solid; margin:50px 0 0 0; box-sizing:border-box; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; overflow:hidden;}
@@ -417,7 +429,7 @@
 
 
 /* CHECK TABLE */
-.checkDiv{width:100%; border-top:1px #5b524d solid; overflow:hidden;}
+.checkDiv{width:898px; border:1px #d9d9db solid; overflow:hidden; }
 .checkMt{width:100%; border-top:1px #5b524d solid; margin:-1px 0 0 0; overflow:hidden;}
 .checkInfoDiv{width:100%; border-top:1px #d9d9db solid; margin:30px 0 0 0; overflow:hidden;}
 .checkDivTab{width:100%; margin:20px 0 0 0; border-top:1px #5b524d solid; overflow:hidden;}
@@ -593,6 +605,7 @@
 .viewContents{margin:30px 20px 70px; line-height:1.4; font-size:14px; color:#727272;}
 .viewContents2{margin:20px 20px 40px; line-height:1.4; font-size:14px; color:#727272;}
 .viewLine{border-bottom:1px #d9d9d9 solid;}
+#Econtent_text{font-size:15px;}
 
 /* FAQ */
 .faqList{width:100%; border-bottom:1px #d9d9d9 solid; margin:16px 0 0 0; overflow:hidden;}
@@ -669,7 +682,7 @@
 /* BTN */
 .sbtn{display:block; width:130px; height:40px; line-height:40px; background:#f7703c; color:#fff !important; font-size:14px; font-weight:600; text-align:center;}
 .sbtn:hover{color:#fff;}
-.sbtnMini{display:block; width:110px; height:30px; line-height:30px; background:#f7703c; color:#fff !important; font-size:14px; font-weight:600; text-align:center;}
+.sbtnMini{display:block; width:110px; height:30px; line-height:30px; background:#999; color:#fff !important; font-size:14px; font-weight:600; text-align:center;}
 .sbtnMini:hover{color:#fff;}
 .nbtnbig{display:block; width:110px; height:30px; line-height:30px; background:#999; color:#fff !important; font-size:14px; font-weight:600; text-align:center;}
 .nbtnbig:hover{color:#fff;}
@@ -701,6 +714,10 @@
 .ingbtn:hover{color:#fff;}
 .finishbtn{display:inline-block; width:40px; height:20px; line-height:20px; font-size:12px; color:#fff; font-weight:600; text-align:center; background:url('../images/btn/btn_finish.png') left top no-repeat;}
 .finishbtn:hover{color:#fff;}
+.ingishbtn{display:inline-block; width:50px; height:20px; line-height:20px; font-size:12px; color:#fff; font-weight:600; text-align:center; background:url('../images/btn/btn_ing.png') left top no-repeat;}
+.ingishbtn:hover{color:#fff;}
+.intendishbtn{display:inline-block; width:41px; height:20px; line-height:20px; font-size:12px; color:#fff; font-weight:600; text-align:center; background:url('../images/btn/btn_finish.png') left top no-repeat;}
+.intendishbtn:hover{color:#fff;}
 .selectbtn{display:block; width:108px; height:28px; text-align:center; line-height:28px; color:#666; font-size:14px; font-weight:600; border:1px #d3d3d3 solid;}
 .selectbtn:hover{color:#666; text-decoration:none;}
 .selectbtn2{display:block; width:108px; height:28px; text-align:center; line-height:28px; color:#f7703c; font-size:14px; font-weight:600; border:1px #f7703c solid;}
@@ -718,7 +735,9 @@
 
 
 /* BTN AREA */
-.btnArea{position:relative; width:100%; height:30px; padding:20px 0 0 0;text-align:center; clear:both;}
+.btnArea{position:relative; width:670px; height:30px; padding:20px 0 0 0;text-align:center; clear:both;}
+.adminbtnArea{position:relative; width:670px; height:30px; padding:20px 0 0 0;text-align:center; clear:both;}
+.adminbtnArea2{position:relative; width:898px; height:30px; padding:20px 0 0 0;text-align:center; clear:both;}
 .btnArea2{position:relative; width:140px; height:50px; padding:30px 0 0 0; margin:0 auto; clear:both;}
 .btnAreaCenter{position:relative; width:130px; height:40px; padding:20px 0 0 0; margin:0 auto; clear:both;}
 .btnAreaList{position:relative; width:100%; text-align:center; clear:both;}

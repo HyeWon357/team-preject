@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -33,31 +35,6 @@
 			<span>관리자 (GMT+9:00) Seoul </span> <img
 				src="http://lmsenterprise2019.itmap.co.kr/_admin/image/logout.png"
 				alt="">
-
-			<!-- <table class="header-tb">
-        <tr>
-          <td class="select">
-            <img src="http://lmsenterprise2019.itmap.co.kr/_admin/image/KOR.png" alt="">
-            <span>한국어</span>
-          </td>
-          <td class="arrow">
-            <div class="separator"></div>
-            <span>▼</span>
-          </td>
-        </tr>
-      </table>
-
-      <table class="header-tb">
-        <tr>
-          <td class="select">
-            <span>LMS 매뉴얼</span>
-          </td>
-          <td class="arrow">
-            <div class="separator"></div>
-            <span>▼</span>
-          </td>
-        </tr>
-      </table> -->
 		</div>
 	</header>
 
@@ -127,18 +104,6 @@
 						<strong>1:1문의</strong><span>쟈뎅에 궁금하신 사항을 남겨주시면 답변해드립니다.</span>
 					</h2>
 
-					<div class="myInfo">
-						<ul>
-							<li class="info"><strong>가나다</strong> 님의 정보를 한눈에 확인하세요.</li>
-							<li>보유 쿠폰<br /> <span class="num">199</span> <span
-								class="unit">장</span></li>
-							<li class="point">내 포인트<br /> <span class="num">100,000</span>
-								<span class="unit">P</span></li>
-							<li class="last">진행중인 주문<br /> <span class="num">199</span>
-								<span class="unit">건</span></li>
-						</ul>
-					</div>
-
 
 					<div class="orderDivNm">
 						<table
@@ -159,12 +124,14 @@
 								<th scope="col" class="tnone">등록일</th>
 								<th scope="col">처리상태</th>
 							</thead>
+							
 							<tbody>
+							<c:forEach var="dto" items="${admin_inquirylist}">
 								<tr>
-									<td class="tnone">2</td>
-									<td>배송</td>
-									<td class="left"><a href="#">배송문의 드립니다!</a></td>
-									<td class="tnone">14-05-31</td>
+									<td class="tnone">${dto.hInum}</td>
+									<td>상품</td>
+									<td class="left"><a href="admin_inquirycontent?hInum=${dto.hInum}">${dto.hItitle}</a></td>
+									<td class="tnone">${dto.hIday}</td>
 									<td>
 										<ul class="state">
 											<li>
@@ -173,27 +140,13 @@
 										</ul>
 									</td>
 								</tr>
-
-								<tr>
-									<td class="tnone">1</td>
-									<td>상품</td>
-									<td class="left"><a href="admin_inquirycontent.html">상품
-											재입고 언제 되나요? (1)</a></td>
-									<td class="tnone">14-05-31</td>
-									<td>
-										<ul class="state">
-											<li>
-												<div class="obtnMini iw83">답변완료</div>
-											</li>
-										</ul>
-									</td>
-								</tr>
-
+								
+								</c:forEach>
 
 							</tbody>
 						</table>
 
-						<div class="noData">문의 하신 내용이 없습니다.</div>
+						 <!-- <div class="noData">문의 하신 내용이 없습니다.</div> -->
 					</div>
 
 

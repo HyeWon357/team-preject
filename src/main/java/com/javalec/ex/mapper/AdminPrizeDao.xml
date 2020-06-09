@@ -1,0 +1,47 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.javalec.ex.dao.AdminPrizeDao">
+<!-- 당첨자 발표 목록 -->
+	<select id="adminPList" resultType="com.javalec.ex.dto.PrizeDto">
+		select * from prize order by prize_id desc 
+	</select>
+
+<!-- 당첨자 발표 내용 -->
+	<select id="adminPContent" resultType="com.javalec.ex.dto.PrizeDto">
+		select * from prize where prize_id=#{param1}
+	</select>
+<!-- 이전글 다음글 -->
+	<select id="prize_prev" resultType="com.javalec.ex.dto.PrizeDto">
+	select * from
+	(select rownum rnum,prize_id,admin,prize_title,prize_content,prize_file,prize_date,prize_hit from
+	(select * from prize order by prize_id desc))
+	where prize_id=(select max(prize_id) from prize where prize_id &lt; #{param1})
+	</select>
+	<select id="prize_next" resultType="com.javalec.ex.dto.PrizeDto">
+	select * from
+	(select rownum rnum,prize_id,admin,prize_title,prize_content,prize_file,prize_date,prize_hit from
+	(select * from prize order by prize_id desc))
+	where prize_id=(select max(prize_id) from prize where prize_id &gt; #{param1})
+	</select>
+	
+<!-- 당첨자 발표 작성 -->
+	<insert id="prizeWrite">
+		insert into prize(prize_id,admin,prize_title,prize_content,prize_file) values(
+		prize_seq.nextval,'admin',#{prize_title},#{prize_content},'<if test="#{prize_file}==null"></if>')
+	</insert>
+
+<!-- 당첨자 발표 삭제 -->
+	<delete id="prizeDelete">
+		delete from prize where prize_id=#{param1}
+	</delete>
+
+<!-- 당첨자 발표 수정 -->
+	<select id="adminPrizeM" resultType="com.javalec.ex.dto.PrizeDto">
+		select * from prize where prize_id=#{param1}
+	</select>
+	<update id="prizeModify">
+		update prize set prize_title=#{prize_title},prize_content=#{prize_content},prize_file=#{prize_file},prize_date=sysdate where prize_id=#{prize_id}
+	</update>
+</mapper>

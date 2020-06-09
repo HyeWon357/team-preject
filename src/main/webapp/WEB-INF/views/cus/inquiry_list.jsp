@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,14 +28,23 @@
 <script type="text/javascript" src="../js/html5.js"></script>
 <script type="text/javascript" src="../js/respond.min.js"></script>
 <![endif]-->
-<script type="text/javascript">
-	$(document).ready(function() {
 
-	});
+<script type="text/javascript">
+	//로그인 유,무
+	function login_check() {
+
+		if (confirm("로그인이 필요한 페이지 입니다. 로그인 페이지로 이동 하시겠습니까?") == true) { //확인
+			location.href = "#";
+
+		} else { //취소
+			return;
+		}
+
+	}
 </script>
+
 </head>
 <body>
-
 
 
 	<!--익스레이어팝업-->
@@ -119,7 +131,7 @@
 						</div>
 						<ul>
 							<li><a href="#">EVENT</a></li>
-							<li><a href="#">CUSTOMER</a></li>
+							<li><a href="../cus/notice_list">CUSTOMER</a></li>
 							<li><a href="#">COMMUNITY</a></li>
 						</ul>
 					</div>
@@ -127,7 +139,7 @@
 						<ul>
 							<li><a href="#">LOGIN</a></li>
 							<li><a href="#">JOIN</a></li>
-							<li><a href="#">MY PAGE</a></li>
+							<li><a href="../cus/inquiry_list" onclick="login_check()">MYPAGE</a></li>
 							<li><a href="#">CART</a></li>
 						</ul>
 
@@ -210,7 +222,7 @@
 				<div id="location">
 					<ol>
 						<li><a href="#">HOME</a></li>
-						<li><a href="#">MY PAGE</a></li>
+						<li><a href="../cus/inquiry_list" onclick="login_check()">MYPAGE</a></li>
 						<li class="last">1:1문의</li>
 					</ol>
 				</div>
@@ -227,7 +239,7 @@
 							<li><a href="#" id="leftNavi4">위시리스트</a></li>
 							<li><a href="#" id="leftNavi5">나의 쿠폰</a></li>
 							<li><a href="#" id="leftNavi6">나의 포인트</a></li>
-							<li><a href="#" id="leftNavi7">1:1문의</a></li>
+							<li><a href="../mypage/inquiry_list" id="leftNavi7">1:1문의</a></li>
 							<li><a href="#" id="leftNavi8">회원정보 수정</a></li>
 							<li class="last"><a href="#" id="leftNavi9">회원 탈퇴</a></li>
 						</ul>
@@ -244,63 +256,91 @@
 								<strong>1:1문의</strong><span>쟈뎅에 궁금하신 사항을 남겨주시면 답변해드립니다.</span>
 							</h2>
 
-							<div class="myInfo">
-								<ul>
-									<li class="info"><strong>가나다</strong> 님의 정보를 한눈에 확인하세요.</li>
-									<li>보유 쿠폰<br /> <span class="num">199</span> <span
-										class="unit">장</span></li>
-									<li class="point">내 포인트<br /> <span class="num">100,000</span>
-										<span class="unit">P</span></li>
-									<li class="last">진행중인 주문<br /> <span class="num">199</span>
-										<span class="unit">건</span></li>
-								</ul>
-							</div>
 
-							<div class="checkDiv">
-								<table summary="분류, 제목, 상세내용, 첨부파일 순으로 궁금하신 점을 문의 하실수 있습니다."
-									class="checkTable" border="1" cellspacing="0">
-									<caption>1:1문의</caption>
+							<div class="orderDivNm">
+								<table
+									summary="NO, 종류, 적립포인트, 적립날짜, 상태 순으로 현재 적립된 포인트를 조회 하실수 있습니다."
+									class="orderTable2" border="1" cellspacing="0">
+									<caption>적립내역 보기</caption>
 									<colgroup>
-										<col width="19%" class="tw30" />
+										<col width="9%" class="tnone" />
+										<col width="14%" class="tw20" />
 										<col width="*" />
+										<col width="15%" class="tnone" />
+										<col width="15%" class="tw30" />
 									</colgroup>
+									<thead>
+										<th scope="col" class="tnone">NO.</th>
+										<th scope="col">분류</th>
+										<th scope="col">제목</th>
+										<th scope="col" class="tnone">등록일</th>
+										<th scope="col">처리상태</th>
+									</thead>
+
 									<tbody>
-										<tr>
-											<th scope="row"><span>분류</span></th>
-											<td><select>
-													<option value="">선택해주세요.</option>
-													<option value="">배송</option>
-													<option value="">상품</option>
-													<option value="">교환/환불</option>
-													<option value="">기타</option>
-											</select></td>
-										</tr>
-										<tr>
-											<th scope="row"><span>제목</span></th>
-											<td><input type="text" class="wlong" /></td>
-										</tr>
-										<tr>
-											<th scope="row"><span>상세 내용</span></th>
-											<td><textarea class="tta"></textarea></td>
-										</tr>
-										<tr>
-											<th scope="row"><span>첨부파일</span></th>
-											<td><input type="file" class="fileType" /></td>
-										</tr>
+										<c:forEach var="dto" items="${inquiry_list}">
+											<tr>
+												<td class="tnone">${dto.hInum}</td>
+												<td>상품</td>
+												<td class="left"><a
+													href="inquiry_content?hInum=${dto.hInum}">${dto.hItitle}</a></td>
+												<td class="tnone">${dto.hIday}</td>
+												<td>
+													<ul class="state">
+														<li><div class="nbtnMini iw83">답변대기</div></li>
+													</ul>
+												</td>
+											</tr>
+										</c:forEach>
+
 									</tbody>
 								</table>
+
+								<!-- <div class="noData">문의 하신 내용이 없습니다.</div> -->
 							</div>
 
-							<!-- Btn Area -->
-							<div class="btnArea">
-								<div class="bCenter">
+
+							<div class="btnAreaList">
+
+								<div class="bRight">
 									<ul>
-										<li><a href="#" class="nbtnbig">취소</a></li>
-										<li><a href="#" class="sbtnMini">확인</a></li>
+										<li><a href="inquiry_write2" class="writeBtn">글쓰기</a></li>
+									</ul>
+								</div>
+								
+								<!-- 페이징이동1 -->
+								<div class="allPageMoving1">
+
+									<a href="#" class="n"><img src="../images/btn/btn_pre2.gif"
+										alt="처음으로" /></a><a href="#" class="pre"><img
+										src="../images/btn/btn_pre1.gif" alt="앞페이지로" /></a> <strong>1</strong>
+									<a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a
+										href="#">5</a> <a href="#" class="next"><img
+										src="../images/btn/btn_next1.gif" alt="뒤페이지로" /></a><a href="#"
+										class="n"><img src="../images/btn/btn_next2.gif"
+										alt="마지막페이지로" /></a>
+
+								</div>
+								<!-- //페이징이동1 -->
+							</div>
+
+							<div class="searchWrap">
+								<div class="search">
+									<ul>
+										<li class="web"><img src="../images/txt/txt_search.gif"
+											alt="search" /></li>
+										<li class="se"><select>
+												<option value="" />제목
+												</option>
+										</select></li>
+										<li><input type="text" class="searchInput" /></li>
+										<li class="web"><a href="#"><img
+												src="../images/btn/btn_search.gif" alt="검색" /></a></li>
+										<li class="mobile"><a href="#"><img
+												src="../images/btn/btn_search_m.gif" alt="검색" /></a></li>
 									</ul>
 								</div>
 							</div>
-							<!-- //Btn Area -->
 
 						</div>
 					</div>

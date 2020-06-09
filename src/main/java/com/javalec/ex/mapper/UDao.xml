@@ -1,0 +1,40 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.javalec.ex.Dao.UserDao">
+    
+    <!-- notice -->
+    <select id="notice_list" resultType="com.javalec.ex.Dto.NDto">
+       select * from notice order by hNnum desc
+    </select>
+   	
+   	<select id="notice_content" resultType="com.javalec.ex.Dto.NDto">
+   		select * from notice where hNnum=#{param1}
+   	</select>
+   	
+   	<update id="notice_upHit">
+   		update notice set hNhit=hNhit+1 where hNnum=#{param1}
+   	</update>
+   
+   
+	<!-- inquiry -->
+	<select id="inquiry_list" resultType="com.javalec.ex.Dto.IDto">
+		select * from inquiry order by hInum desc
+	</select>
+	
+	<select id="inquiry_content" resultType="com.javalec.ex.Dto.IDto">
+		select * from inquiry where hInum=#{param1}
+	</select>
+	
+	<insert id="inquiry_write">
+		insert into inquiry values (inquiry_seq.nextval, #{param1}, #{param2}, #{param3}, sysday, )
+	</insert>
+	
+	
+	<!-- Faq -->
+	<select id="faq_list" resultType="com.javalec.ex.Dto.FDto">
+		select * from faq order by hFnum desc
+	</select>
+	
+</mapper>

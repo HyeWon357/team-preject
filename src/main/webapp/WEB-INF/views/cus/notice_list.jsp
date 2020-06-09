@@ -279,11 +279,6 @@
 
 							<div class="btnAreaList">
 
-								<div class="bwright">
-									<ul>
-										<li><a href="admin_noticewrite.html" class="writeBtn">글쓰기</a></li>
-									</ul>
-								</div>
 
 								<!-- 페이징이동1 -->
 								<div class="allPageMoving1">

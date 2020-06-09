@@ -50,6 +50,17 @@
 		$("#ieUser").hide();
 		clearTimeout(msietimer);
 	}
+	
+	//취소 확인
+	function cancel_check() {
+
+		if (confirm("정말 글 작성을 취소하겠습니까?") == true) {
+			location.href = "admin_faqlist";
+
+		} else {
+			return false;
+		}
+	}
 </script>
 
 </head>
@@ -131,8 +142,7 @@
 			<div id="contents">
 				<div id="customer">
 
-					<form action="faqwrite" method="post"
-						enctype="multipart/form-data">
+					<form action="faqwrite" method="post">
 						<h2>
 							<strong>FAQ</strong><span>회원님들께서 자주 묻는 질문들을 모아 놓았습니다.</span>
 						</h2>
@@ -148,6 +158,12 @@
 
 								<tbody>
 									<tr>
+										<th scope="row"><span>작성자</span></th>
+										<td><input type="text" class="wlong" name="hFname"
+											maxlength=20 /></td>
+									</tr>
+									
+									<tr>
 										<th scope="row"><span>분류</span></th>
 										<td><select>
 												<option value="">선택해주세요.</option>
@@ -158,12 +174,12 @@
 									</tr>
 									<tr>
 										<th scope="row"><span>제목</span></th>
-										<td><input type="text" class="wlong" name="hItitle"
+										<td><input type="text" class="wlong" name="hFtitle"
 											maxlength=100 /></td>
 									</tr>
 									<tr>
 										<th scope="row"><span>상세 내용</span></th>
-										<td><textarea class="tta" name="hIcontent" maxlength=1000></textarea></td>
+										<td><textarea class="tta" name="hFcontent" maxlength=1000></textarea></td>
 									</tr>
 								</tbody>
 							</table>
@@ -174,7 +190,7 @@
 						<div class="btnArea">
 							<div class="bCenter">
 								<ul>
-									<li><a href="admin_faqlist" class="nbtnbig">취소</a></li>
+									<li><a href="#" class="nbtnbig" onclick="cancel_check">취소</a></li>
 									<input type="submit" class="sbtnMini" value="확인">
 								</ul>
 							</div>

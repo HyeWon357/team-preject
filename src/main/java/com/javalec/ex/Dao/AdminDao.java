@@ -23,6 +23,10 @@ public interface AdminDao {
 	
 	//faq
 	public ArrayList<FDto> admin_faqlist();
+	public FDto admin_faqcontent(String hFnum);
 	public FDto admin_faqwrite(int hFnum);
 	public void faqwrite(String hFname, String hFtitle, String hFcontent);
+	public void faqdelete(String hFnum);
+	public FDto admin_faqmodify(String hFnum);
+	public void faqmodify(String hFtitle, String hFcontent, int hFnum);
 }

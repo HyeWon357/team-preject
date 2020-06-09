@@ -50,18 +50,28 @@
 		$("#ieUser").hide();
 		clearTimeout(msietimer);
 	}
-	
+
 	//수정 확인
 	function modify_check() {
-		
-		if(confirm("정말 수정하시겠습니까?") == true) { //확인
-			document.form.submit();
-		
-		}else { //취소
-			return;
+
+		if (confirm("정말 수정하시겠습니까?") == true) { //확인
+			document.noticemodify.submit();
+
+		} else { //취소
+			return false;
 		}
 	}
 	
+	//취소 확인
+	function cancel_check() {
+		
+		if (confirm("정말 취소하겠습니까?") == true) {
+			location.href="admin_noticelist";
+			
+		}else {
+			return false;
+		}
+	}
 </script>
 </head>
 
@@ -75,7 +85,7 @@
 				src="http://lmsenterprise2019.itmap.co.kr/_admin/image/logout.png"
 				alt="">
 
-			
+
 		</div>
 	</header>
 
@@ -143,10 +153,14 @@
 			<div id="contents">
 				<div id="mypage">
 
-					
-					<form action="noticemodify" method="post" name="noticemodify">
-					<input type="hidden" name="hNnum" value="${admin_noticemodify.hNnum }">
 
+					<form action="noticemodify" method="post" name="noticemodify">
+						<input type="hidden" name="hNnum" value="${admin_noticemodify.hNnum }">
+						
+						<h2>
+							<strong>NOTICE</strong><span>쟈뎅샵 소식을 전해드립니다.</span>
+						</h2>
+						
 						<div class="checkDiv">
 							<table summary="분류, 제목, 상세내용, 첨부파일 순으로 궁금하신 점을 문의 하실수 있습니다."
 								class="checkTable" border="1" cellspacing="0">
@@ -158,15 +172,18 @@
 								<tbody>
 									<tr>
 										<th scope="row"><span>작성자</span></th>
-										<td><input type="text" class="wlong" name="hNname" value="${admin_noticemodify.hNname}" readonly /></td>
+										<td><input type="text" class="wlong" name="hNname"
+											value="${admin_noticemodify.hNname}" readonly maxlength="20"/></td>
 									</tr>
 									<tr>
 										<th scope="row"><span>제목</span></th>
-										<td><input type="text" class="wlong" name="hNtitle" value="${admin_noticemodify.hNtitle}" /></td>
+										<td><input type="text" class="wlong" name="hNtitle"
+											value="${admin_noticemodify.hNtitle}" maxlength="100"/></td>
 									</tr>
 									<tr>
 										<th scope="row"><span>상세 내용</span></th>
-										<td><input type="text" class="tta" name="hNcontent" value="${admin_noticemodify.hNcontent}" /> </td>
+										<td><input type="text" class="tta" name="hNcontent"
+											value="${admin_noticemodify.hNcontent}" maxlength="1000"/></td>
 									</tr>
 								</tbody>
 							</table>
@@ -176,8 +193,8 @@
 						<div class="btnArea">
 							<div class="bCenter">
 								<ul>
-									<li><a href="admin_noticelist" class="nbtnbig">취소</a></li>
-									<input type="submit" class="sbtnMini" value="확인" onclick="modify_check()">
+									<li><a href="#" class="nbtnbig" onclick="cancel_check()">취소</a></li>
+									<input type="button" class="sbtnMini" value="확인" onclick="modify_check()">
 								</ul>
 							</div>
 						</div>

@@ -163,11 +163,10 @@
 								src="../images/btn/btn_next1.gif" alt="뒤페이지로" /></a><a href="#"
 								class="n"><img src="../images/btn/btn_next2.gif"
 								alt="마지막페이지로" /></a>
-
 						</div>
-						<!-- //페이징이동1 -->
 					</div>
 
+						<!-- //페이징이동1 -->
 					<div class="searchWrap">
 						<div class="search">
 							<ul>

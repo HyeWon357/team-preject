@@ -40,8 +40,8 @@
 			//삭제 확인
 			function delete_check() {
 
-				if(confirm("정말 삭제하시겠습니까?") == true) { //확인
-					location.href="noticedelete?hNnum=${admin_noticecontent.hNnum}";
+				if (confirm("정말 삭제하시겠습니까?") == true) { //확인
+					location.href = "faqdelete?hFnum=${admin_faqcontent.hFnum}";
 
 				} else { //취소
 					return false;
@@ -111,61 +111,28 @@
 			<div id="contents">
 				<div id="customer">
 					<h2>
-						<strong>NOTICE</strong><span>쟈뎅샵 소식을 전해드립니다.</span>
+						<strong>FAQ</strong><span>회원님들께서 자주 묻는 질문들을 모아 놓았습니다.</span>
 					</h2>
 
 					<div class="viewDivMt">
 						<div class="viewHead">
 							<div class="subject">
 								<ul>
-									<li>${admin_noticecontent.hNtitle }</li>
+									<li>${admin_faqcontent.hFtitle }</li>
 								</ul>
 							</div>
-							<div class="day">
-								<p class="txt">
-									작성일<span>${admin_noticecontent.hNday }</span>
-								</p>
-							</div>
-						</div>
-
-						<div class="viewContents">${admin_noticecontent.hNcontent }
+							
+						<div class="viewContents">${admin_faqcontent.hFcontent }
 						</div>
 					</div>
-
-
-
-					<!-- 이전다음글 -->
-					<div class="pnDiv web">
-						<table summary="이전다음글을 선택하여 보실 수 있습니다." class="preNext" border="1"
-							cellspacing="0">
-							<caption>이전다음글</caption>
-							<colgroup>
-								<col width="100px" />
-								<col width="*" />
-							</colgroup>
-							<tbody>
-								<tr>
-									<th class="pre">PREV</th>
-									<td><a href="#">상품 재입고는 언제 되나요?</a></td>
-								</tr>
-
-								<tr>
-									<th class="next">NEXT</th>
-									<td>다음 글이 없습니다.</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					<!-- //이전다음글 -->
-
-
+					
 					<!-- Btn Area -->
 					<div class="btnArea btline">
 						<div class="bRight">
 							<ul>
-								<li><a href="admin_noticelist" class="sbtnMini mw">목록</a></li>
+								<li><a href="admin_faqlist" class="sbtnMini mw">목록</a></li>
 								<li><a href="#" class="sbtnMini mw" onclick="delete_check()"> 삭제 </a></li>
-								<li><a href="admin_noticemodify?hNnum=${admin_noticecontent.hNnum }" class="sbtnMini mw"> 수정 </a></li>
+								<li><a href="admin_faqmodify?hFnum=${admin_faqcontent.hFnum }" class="sbtnMini mw"> 수정 </a></li>
 							</ul>
 						</div>
 					</div>

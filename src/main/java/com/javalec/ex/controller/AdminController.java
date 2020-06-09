@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.support.DaoSupport;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -114,6 +115,14 @@ public class AdminController {
 		return "admin/admin_faqlist";
 	}
 	
+	@RequestMapping("admin/admin_faqcontent")
+	public String admin_faqcontent(HttpServletRequest request, Model model) {
+		
+		AdminDao dao = sqlSession.getMapper(AdminDao.class);
+		model.addAttribute("admin_faqcontent", dao.admin_faqcontent(request.getParameter("hFnum")));
+		return "admin/admin_faqcontent";
+	}
+	
 	@RequestMapping("admin/admin_faqwrite")
 	public String admin_faqwrite(Model model) {
 		
@@ -127,5 +136,30 @@ public class AdminController {
 		dao.faqwrite(fdto.gethFname(), fdto.gethFtitle(), fdto.gethFcontent());
 		return "redirect:admin_faqlist";
 	}
+	
+	@RequestMapping("admin/faqdelete")
+	public String faqdelete(HttpServletRequest request, Model model) {
+		
+		AdminDao dao = sqlSession.getMapper(AdminDao.class);
+		dao.faqdelete(request.getParameter("hFnum"));
+		return "redirect:admin_faqlist";
+	}
+	
+	@RequestMapping("admin/admin_faqmodify")
+	public String admin_faqmodify(HttpServletRequest request, Model model) {
+		
+		AdminDao dao = sqlSession.getMapper(AdminDao.class);
+		model.addAttribute(dao.admin_faqmodify(request.getParameter("hFnum")));
+		return "admin/admin_faqmodify";
+	}
+	
+	@RequestMapping("admin/faqmodify")
+	public String faqmodify(FDto fdto, Model model) {
+		
+		AdminDao dao = sqlSession.getMapper(AdminDao.class);
+		dao.faqmodify(fdto.gethFtitle(), fdto.gethFcontent(), fdto.gethFnum());
+		return "redirect:admin_faqlist";
+	}
+	
 	
 }

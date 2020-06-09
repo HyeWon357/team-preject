@@ -32,7 +32,7 @@
 	
 	
 	<!-- 1:1문의 -->
-	<select id="admin_inpuirylist" resultType="com.javalec.ex.Dto.IDto">
+	<select id="admin_inquirylist" resultType="com.javalec.ex.Dto.IDto">
 		select * from inquiry order by hInum desc
 	</select>
 	
@@ -47,5 +47,24 @@
 		select * from faq order by hFnum desc
 	</select>
 	
+	<select id="admin_faqcontent" resultType="com.javalec.ex.Dto.FDto">
+		select * from faq where hFnum=#{param1}
+	</select>
+	
+	<insert id="faqwrite">
+		insert into faq values (faq_seq.nextval, #{param1}, #{param2}, #{param3})
+	</insert>
+	
+	<delete id="faqdelete">
+		delete from faq where hFnum=#{param1}
+	</delete>
+	
+	<select id="admin_faqmodify" resultType="com.javalec.ex.Dto.FDto">
+		select * from faq where hFnum=#{param1}
+	</select>
+	
+	<update id="faqmodify">
+		update faq set hFtitle=#{param1}, hFcontent=#{param2} where hFnum=#{param3}
+	</update>
 	
 </mapper>

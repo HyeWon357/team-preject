@@ -42,17 +42,16 @@
 		</div>
 
 		<script type="text/javascript">
-		//삭제확인
-		function delete_check() {
-			
-			if(confirm("정말 삭제하시겠습니까?") == true) { //확인
-				document.form.submit();
-			
-			}else { //취소
-				return;
+			//삭제확인
+			function delete_check() {
+
+				if (confirm("정말 삭제하시겠습니까?") == true) { //확인
+					document.form.submit();
+
+				} else { //취소
+					return;
+				}
 			}
-		}
-		
 		</script>
 	</header>
 
@@ -119,53 +118,43 @@
 							<c:forEach var="dto" items="${admin_faqlist}">
 								<ul>
 									<!-- list -->
-									<li><a href="javascript:;" class="faqbtn">
+									<li><a href="admin_faqcontent?hFnum=${dto.hFnum }"
+										class="faqbtn">
 											<div class="question">
 												<div class="blet">Q</div>
 												<div class="category">상품</div>
 												<div class="title">${dto.hFtitle }</div>
 											</div>
-									</a>
-
-										<div class="faqanswer">
-											<div class="faqbox">
-												<div class="blet">A</div>
-												<div class="text">${dto.hFcontent}</div>
-											</div>
-										</div></li>
+									</a></li>
 									<!-- //list -->
+								</ul>
+							</c:forEach>
 						</div>
-						</li>
-						</ul>
-						</c:forEach>
-					</div>
-					<!-- //FAQ -->
+						<!-- //FAQ -->
 
 
-					<div class="btnAreaList">
-						<div class="bwright">
-							<ul>
-								<li><a href="admin_faqwrite" class="writeBtn">글쓰기</a></li>
-								<li><a href="admin_faqmodify" class="nbtnbig mw">수정</a></li>
-								<li><a href="faqdelete" class="nbtnbig mw" onclick="delete_check()">삭제</a></li>
-							</ul>
+						<div class="btnAreaList">
+							<div class="bwright">
+								<ul>
+									<li><a href="admin_faqwrite" class="writeBtn">글쓰기</a></li>
+								</ul>
+							</div>
+
+							<!-- 페이징이동1 -->
+							<div class="allPageMoving1">
+
+								<a href="#" class="n"><img src="../images/btn/btn_pre2.gif"
+									alt="처음으로" /></a><a href="#" class="pre"><img
+									src="../images/btn/btn_pre1.gif" alt="앞페이지로" /></a> <strong>1</strong>
+								<a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a
+									href="#">5</a> <a href="#" class="next"><img
+									src="../images/btn/btn_next1.gif" alt="뒤페이지로" /></a><a href="#"
+									class="n"><img src="../images/btn/btn_next2.gif"
+									alt="마지막페이지로" /></a>
+							</div>
 						</div>
 
-						<!-- 페이징이동1 -->
-						<div class="allPageMoving1">
-
-							<a href="#" class="n"><img src="../images/btn/btn_pre2.gif"
-								alt="처음으로" /></a><a href="#" class="pre"><img
-								src="../images/btn/btn_pre1.gif" alt="앞페이지로" /></a> <strong>1</strong>
-							<a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">5</a>
-							<a href="#" class="next"><img
-								src="../images/btn/btn_next1.gif" alt="뒤페이지로" /></a><a href="#"
-								class="n"><img src="../images/btn/btn_next2.gif"
-								alt="마지막페이지로" /></a>
-
-						</div>
 						<!-- //페이징이동1 -->
-
 						<div class="searchWrap">
 							<div class="search">
 								<ul>

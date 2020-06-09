@@ -185,13 +185,11 @@
 									</tr>
 									<tr>
 										<th scope="row"><span>제목</span></th>
-										<td><input type="text" class="wlong" name="hFtitle" maxlength=100 
-										value="${admin_faqmodify.hFtitle}"/></td>
+										<td><input type="text" class="wlong" name="hFtitle" maxlength=100 value="${admin_faqmodify.hFtitle}"/></td>
 									</tr>
 									<tr>
 										<th scope="row"><span>상세 내용</span></th>
-										<td><input class="tta" name="hIcontent" maxlength=1000
-										value="${admin_faqmodify.hFcontent }"/></td>
+										<td><input class="tta" name="hFcontent" maxlength=1000 value="${admin_faqmodify.hFcontent }"/></td>
 									</tr>
 								</tbody>
 							</table>

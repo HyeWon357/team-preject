@@ -2,14 +2,14 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.javalec.ex.dao.EventDao">
+<mapper namespace="com.javalec.ex.Dao.EventDao">
 <!-- 이벤트 목록 -->
-   <select id="elist" resultType="com.javalec.ex.dto.EventDto">
+   <select id="elist" resultType="com.javalec.ex.Dto.EventDto">
    	select * from event order by event_startDate desc
    </select>
    
 <!-- 이벤트 내용 -->
-   <select id="event_view" resultType="com.javalec.ex.dto.EventDto">
+   <select id="event_view" resultType="com.javalec.ex.Dto.EventDto">
    	select * from event where event_id=#{param1}
    </select>
    <update id="eUpHit">
@@ -17,13 +17,13 @@
    </update>
    
  <!-- 이전글,다음글 -->
-	<select id="event_prev" resultType="com.javalec.ex.dto.EventDto">
+	<select id="event_prev" resultType="com.javalec.ex.Dto.EventDto">
 	select * from
 	(select rownum rnum,event_id,admin,event_title,event_content,event_startDate,event_endDate,event_hit,event_image1,event_image2 from
 	(select * from event order by event_id desc))
 	where event_id=(select max(event_id) from event where event_id &lt; #{param1})
 	</select>
-	<select id="event_next" resultType="com.javalec.ex.dto.EventDto">
+	<select id="event_next" resultType="com.javalec.ex.Dto.EventDto">
 	select * from
 	(select rownum rnum,event_id,admin,event_title,event_content,event_startDate,event_endDate,event_hit,event_image1,event_image2 from
 	(select * from event order by event_id desc))
@@ -32,10 +32,10 @@
  
  
  <!-- 이벤트 댓글 -->
-   <select id="eRlist" resultType="com.javalec.ex.dto.Event_replyDto">
+   <select id="eRlist" resultType="com.javalec.ex.Dto.Event_replyDto">
    	select * from event_reply where event_id=#{param1} order by eventReply_id desc
    </select>
-   <select id="eRcount" resultType="com.javalec.ex.dto.Event_replyDto">
+   <select id="eRcount" resultType="com.javalec.ex.Dto.Event_replyDto">
    	select count(*) as eventReply_count from event_reply where event_id=#{param1}
    </select>
 </mapper>

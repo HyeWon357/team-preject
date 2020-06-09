@@ -8,8 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.javalec.ex.dao.AdminPrizeDao;
-import com.javalec.ex.dto.PrizeDto;
+import com.javalec.ex.Dao.AdminPrizeDao;
+import com.javalec.ex.Dto.PrizeDto;
 
 @Controller
 public class AdminPrizeController {

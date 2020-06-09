@@ -1,8 +1,8 @@
-package com.javalec.ex.dao;
+package com.javalec.ex.Dao;
 
 import java.util.ArrayList;
 
-import com.javalec.ex.dto.PrizeDto;
+import com.javalec.ex.Dto.PrizeDto;
 
 public interface AdminPrizeDao {
 	//당첨자 발표 리스트

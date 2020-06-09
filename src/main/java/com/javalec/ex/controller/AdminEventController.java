@@ -34,9 +34,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.MultipartRequest;
 
-import com.javalec.ex.dao.AdminEventDao;
-import com.javalec.ex.dto.EventDto;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import com.javalec.ex.Dao.AdminEventDao;
+import com.javalec.ex.Dto.EventDto;
+//import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 @Controller
 public class AdminEventController {

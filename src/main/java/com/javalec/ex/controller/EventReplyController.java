@@ -8,10 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.javalec.ex.dao.EventDao;
-import com.javalec.ex.dao.EventReplyDao;
-import com.javalec.ex.dto.EventDto;
-import com.javalec.ex.dto.Event_replyDto;
+import com.javalec.ex.Dao.EventDao;
+import com.javalec.ex.Dao.EventReplyDao;
+import com.javalec.ex.Dto.EventDto;
+import com.javalec.ex.Dto.Event_replyDto;
 
 @Controller
 public class EventReplyController {

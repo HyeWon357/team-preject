@@ -1,4 +1,4 @@
-package com.javalec.ex.dto;
+package com.javalec.ex.Dto;
 
 public class Event_replyDto {
 	public Event_replyDto() {}

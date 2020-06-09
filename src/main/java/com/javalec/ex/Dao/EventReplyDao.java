@@ -1,6 +1,6 @@
-package com.javalec.ex.dao;
+package com.javalec.ex.Dao;
 
-import com.javalec.ex.dto.Event_replyDto;
+import com.javalec.ex.Dto.Event_replyDto;
 
 public interface EventReplyDao {
 	//댓글 작성

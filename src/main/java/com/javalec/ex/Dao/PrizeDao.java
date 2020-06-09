@@ -1,8 +1,8 @@
-package com.javalec.ex.dao;
+package com.javalec.ex.Dao;
 
 import java.util.ArrayList;
 
-import com.javalec.ex.dto.PrizeDto;
+import com.javalec.ex.Dto.PrizeDto;
 
 public interface PrizeDao {
 	//내용

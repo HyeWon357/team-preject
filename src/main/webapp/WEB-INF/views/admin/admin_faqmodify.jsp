@@ -50,6 +50,28 @@
 		$("#ieUser").hide();
 		clearTimeout(msietimer);
 	}
+
+	//수정 확인
+	function modify_check() {
+
+		if (confirm("정말 수정하시겠습니까?") == true) { //확인
+			document.faqmodify.submit();
+
+		} else { //취소
+			return false;
+		}
+	}
+	
+	//취소 확인
+	function cancel_check() {
+		
+		if (confirm("정말 취소하겠습니까?") == true) {
+			location.href="admin_faqlist";
+			
+		}else {
+			return false;
+		}
+	}
 </script>
 
 </head>
@@ -131,8 +153,9 @@
 			<div id="contents">
 				<div id="customer">
 
-					<form action="faqmodify" method="post"
-						enctype="multipart/form-data">
+					<form action="faqmodify" method="post">
+						<input type="hidden" name="hFnum" value="${admin_faqmodify.hFnum }">
+
 						<h2>
 							<strong>FAQ</strong><span>회원님들께서 자주 묻는 질문들을 모아 놓았습니다.</span>
 						</h2>
@@ -148,23 +171,27 @@
 
 								<tbody>
 									<tr>
+										<th scope="row"><span>작성자</span></th>
+										<td><input type="text" class="wlong" name="hFname" value="${admin_faqmodify.hFname}" readonly /></td>
+									</tr>
+									<tr>
 										<th scope="row"><span>분류</span></th>
 										<td><select>
 												<option value="">선택해주세요.</option>
-												<option value="">배송</option>
+												<option value="">회원가입</option>
 												<option value="">상품</option>
-												<option value="">교환/환불</option>
-												<option value="">기타</option>
+												<option value="">주문	</option>
 										</select></td>
 									</tr>
 									<tr>
 										<th scope="row"><span>제목</span></th>
-										<td><input type="text" class="wlong" name="hItitle"
-											maxlength=100 /></td>
+										<td><input type="text" class="wlong" name="hFtitle" maxlength=100 
+										value="${admin_faqmodify.hFtitle}"/></td>
 									</tr>
 									<tr>
 										<th scope="row"><span>상세 내용</span></th>
-										<td><textarea class="tta" name="hIcontent" maxlength=1000></textarea></td>
+										<td><input class="tta" name="hIcontent" maxlength=1000
+										value="${admin_faqmodify.hFcontent }"/></td>
 									</tr>
 								</tbody>
 							</table>
@@ -175,8 +202,8 @@
 						<div class="btnArea">
 							<div class="bCenter">
 								<ul>
-									<li><a href="admin_faqlist" class="nbtnbig">취소</a></li>
-									<input type="submit" class="sbtnMini" value="확인">
+									<li><a href="#" class="nbtnbig" onclick="cancel_check()">취소</a></li>
+									<input type="button" class="sbtnMini" value="확인" onclick=" modify_check()">
 								</ul>
 							</div>
 						</div>

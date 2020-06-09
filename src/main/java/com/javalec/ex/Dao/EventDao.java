@@ -1,9 +1,9 @@
-package com.javalec.ex.dao;
+package com.javalec.ex.Dao;
 
 import java.util.ArrayList;
 
-import com.javalec.ex.dto.EventDto;
-import com.javalec.ex.dto.Event_replyDto;
+import com.javalec.ex.Dto.EventDto;
+import com.javalec.ex.Dto.Event_replyDto;
 
 public interface EventDao {
 	//내용

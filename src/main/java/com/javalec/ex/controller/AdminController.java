@@ -134,7 +134,7 @@ public class AdminController {
 		
 		AdminDao dao = sqlSession.getMapper(AdminDao.class);
 		dao.faqwrite(fdto.gethFname(), fdto.gethFtitle(), fdto.gethFcontent());
-		return "redirect:admin_faqlist";
+		return "redirect:admin_faqlist";	
 	}
 	
 	@RequestMapping("admin/faqdelete")
@@ -149,7 +149,7 @@ public class AdminController {
 	public String admin_faqmodify(HttpServletRequest request, Model model) {
 		
 		AdminDao dao = sqlSession.getMapper(AdminDao.class);
-		model.addAttribute(dao.admin_faqmodify(request.getParameter("hFnum")));
+		model.addAttribute("admin_faqmodify", dao.admin_faqmodify(request.getParameter("hFnum")));
 		return "admin/admin_faqmodify";
 	}
 	
@@ -160,6 +160,5 @@ public class AdminController {
 		dao.faqmodify(fdto.gethFtitle(), fdto.gethFcontent(), fdto.gethFnum());
 		return "redirect:admin_faqlist";
 	}
-	
 	
 }

@@ -56,7 +56,6 @@
 
 		if (confirm("정말 수정하시겠습니까?") == true) { //확인
 			document.faqmodify.submit();
-
 		} else { //취소
 			return false;
 		}
@@ -153,7 +152,7 @@
 			<div id="contents">
 				<div id="customer">
 
-					<form action="faqmodify" method="post">
+					<form action="faqmodify" method="post" name="faqmodify">
 						<input type="hidden" name="hFnum" value="${admin_faqmodify.hFnum }">
 
 						<h2>
@@ -172,7 +171,7 @@
 								<tbody>
 									<tr>
 										<th scope="row"><span>작성자</span></th>
-										<td><input type="text" class="wlong" name="hFname" value="${admin_faqmodify.hFname}" readonly /></td>
+										<td><input type="text" class="wlong" name="hFname" value="${admin_faqmodify.hFname}" readonly maxlength="20" /></td>
 									</tr>
 									<tr>
 										<th scope="row"><span>분류</span></th>
@@ -201,7 +200,7 @@
 							<div class="bCenter">
 								<ul>
 									<li><a href="#" class="nbtnbig" onclick="cancel_check()">취소</a></li>
-									<input type="button" class="sbtnMini" value="확인" onclick=" modify_check()">
+									<input type="button" class="sbtnMini" value="확인" onclick="modify_check()">
 								</ul>
 							</div>
 						</div>

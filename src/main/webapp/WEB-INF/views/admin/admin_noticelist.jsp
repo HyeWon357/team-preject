@@ -49,7 +49,7 @@
 		<ul>
 			<li><a href="../"><span class="nav1">&emsp;</span> 커뮤니티 </a></li>
 			<li><a href="../"><span class="nav2">&emsp;</span> 회원관리 </a></li>
-			<li><a href="../admin_noticelist.html"><span class="nav3">&emsp;</span>
+			<li><a href="../admin_noticelist.jsp"><span class="nav3">&emsp;</span>
 					게시판관리 </a></li>
 			<li><a href="#"><span class="nav4">&emsp;</span> 상품관리 </a></li>
 			</a>

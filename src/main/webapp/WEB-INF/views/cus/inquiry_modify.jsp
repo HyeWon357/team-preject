@@ -25,11 +25,8 @@
 <script type="text/javascript" src="../js/html5.js"></script>
 <script type="text/javascript" src="../js/respond.min.js"></script>
 <![endif]-->
-<script type="text/javascript">
-	$(document).ready(function() {
 
-	});
-</script>
+
 </head>
 <body>
 
@@ -97,6 +94,59 @@
 			$("#ieUser").hide();
 			clearTimeout(msietimer);
 		}
+
+		//취소 확인
+		function cancel_check() {
+
+			if (confirm("정말 취소하겠습니까?") == true) {
+				location.href = "inquiry_list";
+
+			} else {
+				return false;
+			}
+		}
+		
+		
+		//수정 확인
+		function modify_check() {
+
+			if (confirm("정말 수정하시겠습니까?") == true) { //확인
+				document.im.submit();
+
+			} else { //취소
+				return false;
+			}
+		}
+		
+		//유효성
+		function all_check() {
+		
+	        if($("#group").val() == "") {
+	           alert("분류를 선택해 주세요.");
+	           return false;
+	        }
+	        
+	        if(im.hItitle.value == "") {
+	           alert("제목을 입력해주세요");
+	           im.hItitle.focus();
+	           return false;
+	        }
+	        
+	        if(im.hIcontent.value == "") {
+	           alert("내용을 입력해주세요.");
+	           im.hIcontent.focus();
+	           return false;
+	        }
+	           
+	        if($("#hIfile").val() == "") {
+	           alert("이미지는 필수입니다.");
+	           return false;
+	        }
+	        
+	        return im.submit();
+	        
+		}
+		
 	</script>
 
 	<div id="allwrap">
@@ -127,7 +177,8 @@
 						<ul>
 							<li><a href="#">LOGIN</a></li>
 							<li><a href="#">JOIN</a></li>
-							<li><a href="../cus/inquiry_list" onclick="login_check()">MYPAGE</a></li>
+							<li><a href="../cus/inquiry_list" onclick="login_check()">MY
+									PAGE</a></li>
 							<li><a href="#">CART</a></li>
 						</ul>
 
@@ -209,56 +260,41 @@
 
 				<div id="location">
 					<ol>
-						<li><a href="#">HOME</a></li>
-						<li><a href="../cus/inquiry_list" onclick="login_check()">MYPAGE</a></li>
+						<li><a href="../main/main">HOME</a></li>
+						<li><a href="cus/notice_list">CUSTOMER</a></li>
 						<li class="last">1:1문의</li>
 					</ol>
 				</div>
 
 				<div id="outbox">
 					<div id="left">
-						<div id="title">
-							MY PAGE<span>마이페이지</span>
+						<div id="title2">
+							CUSTOMER<span>고객센터</span>
 						</div>
 						<ul>
-							<li><a href="#" id="leftNavi1">주문/배송 조회</a></li>
-							<li><a href="#" id="leftNavi2">반품/배송 현황</a></li>
-							<li><a href="#" id="leftNavi3">장바구니</a></li>
-							<li><a href="#" id="leftNavi4">위시리스트</a></li>
-							<li><a href="#" id="leftNavi5">나의 쿠폰</a></li>
-							<li><a href="#" id="leftNavi6">나의 포인트</a></li>
-							<li><a href="../cus/inquiry_list" id="leftNavi7">1:1문의</a></li>
-							<li><a href="#" id="leftNavi8">회원정보 수정</a></li>
-							<li class="last"><a href="#" id="leftNavi9">회원 탈퇴</a></li>
+							<li><a href="notice_list" id="leftNavi1">NOTICE</a></li>
+							<li><a href="inquiry_write" id="leftNavi2">1:1문의</a></li>
+							<li><a href="faq_list" id="leftNavi3">FAQ</span></a></li>
+							<li class="last"><a href="guide" id="leftNavi4">이용안내</a></li>
 						</ul>
 					</div>
 					<script type="text/javascript">
-						initSubmenu(7, 0);
+						initSubmenu(2, 0);
 					</script>
 
 
 					<!-- contents -->
 					<div id="contents">
-						<div id="mypage">
+						<div id="customer">
 
-							<form action="Uinquirywrite" method="post" enctype="multipart/form-data">
+							<form action="inquirymodify" method="post" name="im" enctype="multipart/form-data">
+								<input type="hidden" name="hInum" value="${inquiry_modify.hInum}">
+								
 								<h2>
 									<strong>1:1문의</strong><span>쟈뎅에 궁금하신 사항을 남겨주시면 답변해드립니다.</span>
 								</h2>
 
-								<div class="myInfo">
-									<ul>
-										<li class="info"><strong>가나다</strong> 님의 정보를 한눈에 확인하세요.</li>
-										<li>보유 쿠폰<br /> <span class="num">199</span> <span
-											class="unit">장</span></li>
-										<li class="point">내 포인트<br /> <span class="num">100,000</span>
-											<span class="unit">P</span></li>
-										<li class="last">진행중인 주문<br /> <span class="num">199</span>
-											<span class="unit">건</span></li>
-									</ul>
-								</div>
-
-								<div class="checkDiv">
+								<div class="checkMt">
 									<table summary="분류, 제목, 상세내용, 첨부파일 순으로 궁금하신 점을 문의 하실수 있습니다."
 										class="checkTable" border="1" cellspacing="0">
 										<caption>1:1문의</caption>
@@ -266,28 +302,34 @@
 											<col width="19%" class="tw30" />
 											<col width="*" />
 										</colgroup>
+
 										<tbody>
 											<tr>
+												<th scope="row"><span>작성자</span></th>
+												<td><input type="text" class="wlong" name="hIname" maxlength=20 value="${inquiry_modify.hIname}" readonly/></td>
+											</tr>
+
+											<tr>
 												<th scope="row"><span>분류</span></th>
-												<td><select>
+												<td><select id="group">
 														<option value="">선택해주세요.</option>
-														<option value="">배송</option>
-														<option value="">상품</option>
-														<option value="">교환/환불</option>
-														<option value="">기타</option>
+														<option value="sho">배송</option>
+														<option value="pro">상품</option>
+														<option value="exc">교환/환불</option>
+														<option value="oth">기타</option>
 												</select></td>
 											</tr>
 											<tr>
 												<th scope="row"><span>제목</span></th>
-												<td><input type="text" class="wlong" name="hItitle" maxlength=100 /></td>
+												<td><input type="text" class="wlong" name="hItitle" maxlength=100 value="${inquiry_modify.hItitle}"/></td>
 											</tr>
 											<tr>
 												<th scope="row"><span>상세 내용</span></th>
-												<td><textarea class="tta" name="hIcontent" maxlength="1000"></textarea></td>
+												<td><input type="text" class="tta" name="hIcontent" maxlength=1000 value="${inquiry_modify.hIcontent}"></td>
 											</tr>
 											<tr>
 												<th scope="row"><span>첨부파일</span></th>
-												<td><input type="file" class="fileType" name="hIfile" maxlength=100/></td>
+												<td><input type="file" class="fileType" name="hIfile" maxlength=100 id="hIfile" value="${inquiry_modify.hIfile}" readonly="readonly"/></td>
 											</tr>
 										</tbody>
 									</table>
@@ -297,8 +339,8 @@
 								<div class="btnArea">
 									<div class="bCenter">
 										<ul>
-											<li><a href="inpuiry_list" class="nbtnbig">취소</a></li>
-											<input type="submit" class="sbtnMini" value="확인">
+											<li><a href="#" class="nbtnbig" onclick="cancel_check()">취소</a></li>
+											<input type="button" class="sbtnMini" onclick="modify_check()" value="확인">
 										</ul>
 									</div>
 								</div>
@@ -313,8 +355,6 @@
 				</div>
 			</div>
 			<!-- //container -->
-
-
 
 
 			<div id="footerWrap">

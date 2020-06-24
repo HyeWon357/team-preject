@@ -304,7 +304,7 @@
 
 								<div class="bRight">
 									<ul>
-										<li><a href="inquiry_write2" class="writeBtn">글쓰기</a></li>
+										<li><a href="inquiry_write" class="writeBtn">글쓰기</a></li>
 									</ul>
 								</div>
 								

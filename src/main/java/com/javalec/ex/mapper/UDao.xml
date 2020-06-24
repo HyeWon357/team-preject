@@ -27,9 +27,27 @@
 		select * from inquiry where hInum=#{param1}
 	</select>
 	
-	<insert id="inquiry_write">
-		insert into inquiry values (inquiry_seq.nextval, #{param1}, #{param2}, #{param3}, sysday, )
-	</insert>
+	<insert id="Uinquirywrite">
+		insert into inquiry values(inquiry_seq.nextval, #{param1}, #{param2}, #{param3}, #{param4}, sysdate, inquiry_seq.currval,0)
+	 </insert>
+	 
+	 <delete id="inquiry_delete">
+	 	delete from inquiry where hInum=#{param1}
+	 </delete>
+	 
+	 <select id="inquiry_modify" resultType="com.javalec.ex.Dto.IDto">
+		select * from inquiry where hInum=#{param1}
+	 </select>
+	 
+	 <update id="inquirymodify">
+		 update inquiry set hItitle=#{param1}, hIcontent=#{param2}, hIfile=#{param3} where hInum=#{param4}
+	 </update>
+	 
+	 <select id="reply_list" resultType="com.javalec.ex.Dto.InquiryRDto">
+		select * from inquiryR order by hRday desc
+	</select>
+	 
+	 
 	
 	
 	<!-- Faq -->

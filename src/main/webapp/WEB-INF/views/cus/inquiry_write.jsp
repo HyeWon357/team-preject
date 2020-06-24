@@ -25,11 +25,8 @@
 <script type="text/javascript" src="../js/html5.js"></script>
 <script type="text/javascript" src="../js/respond.min.js"></script>
 <![endif]-->
-<script type="text/javascript">
-	$(document).ready(function() {
 
-	});
-</script>
+
 </head>
 <body>
 
@@ -97,6 +94,53 @@
 			$("#ieUser").hide();
 			clearTimeout(msietimer);
 		}
+
+		//취소 확인
+		function cancel_check() {
+
+			if (confirm("정말 글 작성을 취소하겠습니까?") == true) {
+				location.href = "inquiry_list";
+
+			} else {
+				return false;
+			}
+		}
+		
+		
+		//유효성 검사
+		function all_check() {
+
+			if(iw.hIname.value == "") {
+				alert("작성자를 입력해 주세요.");
+				iw.hIname.focus();
+				return false;
+			}
+			
+			if($("#group").val() == "") {
+				alert("분류를 선택해 주세요.");
+				return false;
+			}
+			
+			if(iw.hItitle.value == "") {
+				alert("제목을 입력해주세요");
+				iw.hItitle.focus();
+				return false;
+			}
+			
+			if(iw.hIcontent.value == "") {
+				alert("내용을 입력해주세요.");
+				iw.hIcontent.focus();
+				return false;
+			}
+				
+			if($("#hIfile").val() == "") {
+				alert("이미지는 필수입니다.");
+				return false;
+			}
+				
+			return iw.submit();
+		}
+		
 	</script>
 
 	<div id="allwrap">
@@ -237,7 +281,8 @@
 					<div id="contents">
 						<div id="customer">
 
-							<form action="Uinquirywrite" method="post" enctype="multipart/form-data">
+							<form action="Uinquirywrite" method="post" name="iw" enctype="multipart/form-data">
+
 								<h2>
 									<strong>1:1문의</strong><span>쟈뎅에 궁금하신 사항을 남겨주시면 답변해드립니다.</span>
 								</h2>
@@ -253,26 +298,32 @@
 
 										<tbody>
 											<tr>
+												<th scope="row"><span>작성자</span></th>
+												<td><input type="text" class="wlong" name="hIname"
+													maxlength=20 /></td>
+											</tr>
+
+											<tr>
 												<th scope="row"><span>분류</span></th>
-												<td><select>
+												<td><select id="group">
 														<option value="">선택해주세요.</option>
-														<option value="">배송</option>
-														<option value="">상품</option>
-														<option value="">교환/환불</option>
-														<option value="">기타</option>
+														<option value="sho">배송</option>
+														<option value="pro">상품</option>
+														<option value="exc">교환/환불</option>
+														<option value="oth">기타</option>
 												</select></td>
 											</tr>
 											<tr>
 												<th scope="row"><span>제목</span></th>
-												<td><input type="text" class="wlong" name="hItitle" maxlength=100/></td>
+												<td><input type="text" class="wlong" name="hItitle" maxlength=100 /></td>
 											</tr>
 											<tr>
 												<th scope="row"><span>상세 내용</span></th>
-												<td><textarea class="tta" name="hIcontent" maxlength=1000></textarea></td>
+												<td><input type="text" class="tta" name="hIcontent" maxlength=1000></td>
 											</tr>
 											<tr>
 												<th scope="row"><span>첨부파일</span></th>
-												<td><input type="file" class="fileType" name="hIfile" maxlength=100 /></td>
+												<td><input type="file" class="fileType" name="hIfile" axlength=100 id="hIfile"/></td>
 											</tr>
 										</tbody>
 									</table>
@@ -282,8 +333,8 @@
 								<div class="btnArea">
 									<div class="bCenter">
 										<ul>
-											<li><a href="inpuiry_list" class="nbtnbig">취소</a></li>
-											<input type="submit" class="sbtnMini" value="확인">
+											<li><a href="#" class="nbtnbig" onclick="cancel_check()">취소</a></li>
+											<input type="button" class="sbtnMini" onclick="all_check()" value="확인">
 										</ul>
 									</div>
 								</div>

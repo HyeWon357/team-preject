@@ -1,9 +1,11 @@
 package com.javalec.ex.Dao;
 
+import java.awt.List;
 import java.util.ArrayList;
 
 import com.javalec.ex.Dto.FDto;
 import com.javalec.ex.Dto.IDto;
+import com.javalec.ex.Dto.InquiryRDto;
 import com.javalec.ex.Dto.NDto;
 
 public interface AdminDao {
@@ -20,6 +22,15 @@ public interface AdminDao {
 	//1:1문의
 	public ArrayList<IDto> admin_inquirylist();
 	public IDto admin_inquirycontent(String hInum);
+//	public IDto admin_inquiryreply(int hInum);
+//	public void inquiryreply(int hInum, String hIcontent, int hIgroup, int hIindent);
+//	public void inquriydelete(String hInum);
+
+	public ArrayList<InquiryRDto> reply_list();
+	public void reply_delete(InquiryRDto Rdto);
+	public void reply_write(InquiryRDto Rdto);
+	public void reply_update(InquiryRDto Rdto);
+	public InquiryRDto reply_Ajax(InquiryRDto Rdto);
 	
 	//faq
 	public ArrayList<FDto> admin_faqlist();
@@ -29,4 +40,6 @@ public interface AdminDao {
 	public void faqdelete(String hFnum);
 	public FDto admin_faqmodify(String hFnum);
 	public void faqmodify(String hFtitle, String hFcontent, int hFnum);
+	
+	
 }

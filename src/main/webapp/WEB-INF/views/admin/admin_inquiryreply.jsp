@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>INQUIRY WRITE</title>
+<title>INQUIRY REPLY</title>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
 <link rel="stylesheet" href="../css/admin_account.css">
@@ -101,7 +101,7 @@
 			<div id="contents">
 				<div id="mypage">
 
-					<form action="Uinquirywrite" method="post">
+					<form action="inquiryreply" method="post">
 
 						<div class="checkDiv">
 							<table summary="분류, 제목, 상세내용, 첨부파일 순으로 궁금하신 점을 문의 하실수 있습니다."
@@ -113,31 +113,7 @@
 								</colgroup>
 								<tbody>
 									<tr>
-										<th scope="row"><span>작성자</span></th>
-										<td><input type="text" class="wlong" /></td>
-									</tr>
-									<tr>
-										<th scope="row"><span>분류</span></th>
-										<td><select>
-												<option value="">선택해주세요.</option>
-												<option value="">배송</option>
-												<option value="">상품</option>
-												<option value="">교환/환불</option>
-												<option value="">기타</option>
-										</select></td>
-									</tr>
-									
-									<tr>
-										<th scope="row"><span>작성자</span></th>
-										<td><input type="text" class="wlong" maxlength=20 /></td>
-									</tr>
-
-									<tr>
-										<th scope="row"><span>제목</span></th>
-										<td><input type="text" class="wlong" maxlength=100 /></td>
-									</tr>
-									<tr>
-										<th scope="row"><span>상세 내용</span></th>
+										<th scope="row"><span>답변 내용</span></th>
 										<td><textarea class="tta" maxlength=1000></textarea></td>
 									</tr>
 
@@ -149,7 +125,7 @@
 						<div class="btnArea">
 							<div class="bCenter">
 								<ul>
-									<li><a href="admin_inquirylist.html" class="nbtnbig">취소</a></li>
+									<li><a href="admin_inquirylist" class="nbtnbig">취소</a></li>
 									<input type="submit" class="sbtnMini" value="확인">
 								</ul>
 							</div>

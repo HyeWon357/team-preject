@@ -1,33 +1,34 @@
 package com.javalec.ex.Dto;
 
 import java.sql.Timestamp;
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 public class IDto {
 	
 	int hInum;
-	String hIname; //user
-	String hIaname; //admin
+	String hIid;
 	String hItitle;
 	String hIcontent;
 	String hIfile;
 	Timestamp hIday;
-	String hIstep;
-	
+	int hIgroup;
+	int hIindent;
+
 	public IDto() {
 		
 	}
 	
-	public IDto(int hInum, String hIname, String hIaname, String hItitle, String hIcontent, String hIfile, Timestamp hIday, String hIstep) {
+	public IDto(int hInum, String hIid, String hItitle, String hIcontent, String hIfile, Timestamp hIday) {
 		this.hInum = hInum;
-		this.hIname = hIname;
-		this.hIaname = hIaname;
+		this.hIid = hIid;
 		this.hItitle = hItitle;
 		this.hIcontent = hIcontent;
 		this.hIfile = hIfile;
 		this.hIday = hIday;
-		this.hIstep = hIstep;
 	}
-
+	
 	public int gethInum() {
 		return hInum;
 	}
@@ -36,22 +37,14 @@ public class IDto {
 		this.hInum = hInum;
 	}
 
-	public String gethIname() {
-		return hIname;
+	public String gethIid() {
+		return hIid;
 	}
 
-	public void sethIname(String hIname) {
-		this.hIname = hIname;
+	public void sethIid(String hIid) {
+		this.hIid = hIid;
 	}
-
-	public String gethIaname() {
-		return hIaname;
-	}
-
-	public void sethIaname(String hIaname) {
-		this.hIaname = hIaname;
-	}
-
+	
 	public String gethItitle() {
 		return hItitle;
 	}
@@ -84,12 +77,21 @@ public class IDto {
 		this.hIday = hIday;
 	}
 
-	public String gethIstep() {
-		return hIstep;
+	public int gethIgroup() {
+		return hIgroup;
 	}
 
-	public void sethIstep(String hIstep) {
-		this.hIstep = hIstep;
+	public void sethIgroup(int hIgroup) {
+		this.hIgroup = hIgroup;
 	}
+
+	public int gethIindent() {
+		return hIindent;
+	}
+
+	public void sethIindent(int hIindent) {
+		this.hIindent = hIindent;
+	}
+
 	
 }

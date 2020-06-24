@@ -10,7 +10,7 @@
     </select>
    	
    	<select id="admin_noticecontent" resultType="com.javalec.ex.Dto.NDto">
-   		select * from notice where hNnum=#{param1}
+   		select hNnum, hNname, hNtitle, hNcontent, hNhit, to_char(hNday,'YY-MM-DD') from notice where hNnum=#{param1}
    	</select>
    	
 	<insert id="noticewrite">
@@ -39,7 +39,18 @@
 	<select id="admin_inquirycontent" resultType="com.javalec.ex.Dto.IDto">
 		select * from inquiry where hInum=#{param1}
 	</select>
+
+	<select id="reply_list" resultType="com.javalec.ex.Dto.InquiryRDto">
+		select * from inquiryR order by hRday desc
+	</select>
 	
+	<delete id="reply_delete" parameterType="com.javalec.ex.Dto.InquiryRDto">
+		delete from inquiryR where hRnum = #{hRnum}
+	</delete>
+	
+	<insert id="reply_write" parameterType="com.javalec.ex.Dto.InquiryRDto">
+		insert into inquiryR values (inquiryR_seq.nextval, #{hRcnum}, #{hRcontent}, #{hRname}, sysdate)
+	</insert>
 	
 	
 	<!-- faq -->
@@ -66,5 +77,6 @@
 	<update id="faqmodify">
 		update faq set hFtitle=#{param1}, hFcontent=#{param2} where hFnum=#{param3}
 	</update>
+	
 	
 </mapper>

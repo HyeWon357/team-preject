@@ -9,6 +9,8 @@
 <title>INQUIRY CONTENT</title>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="../css/admin_account.css">
 <link rel="stylesheet" type="text/css" href="../css/reset.css?v=Y" />
 <link rel="stylesheet" type="text/css" href="../css/layout.css?v=Y" />
@@ -22,6 +24,49 @@
 <script type="text/javascript" src="../js/idangerous.swiper-2.1.min.js"></script>
 <script type="text/javascript" src="../js/jquery.anchor.js"></script>
 
+<script type="text/javascript">
+	//html 페이지 모두 호출후에 jquery 실행
+
+	$(function() {
+		getreplyList();
+	});
+
+	//답글 리스트
+	function getreplyList() {
+
+		$.ajax({
+			type : 'get',
+			url : "./reply_list",
+			dataType : "json",
+			data : {hRcnum}, //hRcnum; 121 $("#formtable").serialize
+			contentType : "application/json; charset=UTF-8",
+			success : function(data) {
+				alert("성공");
+				
+				var html = "";
+				var Rlist = data.length; //list개수를 확인할 수 있다.
+				$("#Rlist").html(Rlist);
+				
+				if(data.length > 0) {
+					for(var i=0; i<data.length; i++){
+					html += "<p id='writeForm'> 담당자 <span> &emsp;" + data[i].hRcontent + "</span></p>";
+					}
+					
+				}else {
+					html += "<p> 담당자 <span> 등록된 댓글이 없습니다. </span> </p>";
+				}
+				
+				$('#REPLYLIST').html(html);
+				
+			},
+			error : function(request, status, error) {
+				alert("실패" + error);
+			}
+		});
+	}
+
+	
+</script>
 
 </head>
 
@@ -37,19 +82,6 @@
 
 		</div>
 
-		<script type="text/javascript">
-			//삭제확인
-			function delete_check() {
-
-				if (confirm("정말 삭제하시겠습니까?") == true) { //확인
-					document.form.submit();
-
-				} else { //취소
-					return;
-				}
-			}
-		</script>
-		
 	</header>
 
 	<nav>
@@ -137,69 +169,67 @@
 						</div>
 
 						<div class="viewContents">${admin_inquirycontent.hIcontent }
+							<img alt="img"
+								src="../uploadFile/${admin_inquirycontent.hIfile }">
 						</div>
 					</div>
 
-					<!-- 답변 -->
-					<div class="answer">
-						<div class="inbox">
-							<div class="aname">
-								<p>
-									담당자 <span>${admin_inquirycontent.hIday }</span>
-								</p>
+					<form action="" id="replyForm" name="replyForm" method="post">
+						<!-- 답변 -->
+						<div class="answer">
+							<div class="inbox">
+								<div class="aname" id="REPLYLIST">
+									
+								</div>
+								<div class="atxt">
+								
+								</div>
 							</div>
-
-							<div class="atxt">${admin_inquirycontent.hIstep }</div>
 						</div>
-					</div>
-					<!-- //답변 -->
+						<!-- //답변 -->
+					</form>
 
-
-					<!-- 이전다음글 -->
-					<div class="pnDiv web">
-						<table summary="이전다음글을 선택하여 보실 수 있습니다." class="preNext" border="1"
-							cellspacing="0">
-							<caption>이전다음글</caption>
-							<colgroup>
-								<col width="100px" />
-								<col width="*" />
-								<col width="100px" />
-							</colgroup>
-							<tbody>
-								<tr>
-									<th class="pre">PREV</th>
-									<td><a href="#">상품 재입고는 언제 되나요?</a></td>
-									<td>
-										<div class="parea">
-											<div class="nbtnMini">답변대기</div>
-										</div>
-									</td>
-								</tr>
-
-								<tr>
-									<th class="next">NEXT</th>
-									<td>다음 글이 없습니다.</td>
-									<td>&nbsp;</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					<!-- //이전다음글 -->
-
-
-					<!-- Btn Area -->
-					<div class="btnArea">
-						<div class="bRight">
-							<ul>
-								<li><a href="admin_inquirylist" class="sbtnMini mw">목록</a></li>
-								<li><a href="admin_inquirywrite" class="writeBtn">글쓰기</a></li>
-								<li><a href="admin_noticemodify" class="nbtnbig mw">수정</a></li>
-								<li><a href="noticedelete" class="nbtnbig mw"
-									onclick="delete_check()">삭제</a></li>
-							</ul>
+					<br> <br>
+					<form id="formtable" name="formtable" method="post">
+						<div class="checkDiv">
+							<table summary="분류, 제목, 상세내용, 첨부파일 순으로 궁금하신 점을 문의 하실수 있습니다."
+								class="checkTable" border="1" cellspacing="0">
+								<caption>1:1문의</caption>
+								<colgroup>
+									<col width="19%" class="tw30" />
+									<col width="*" />
+								</colgroup>
+								<tbody>
+									<tr>
+										<th scope="row"><span>답변 내용</span></th>
+										<td><textarea class="tta" maxlength=1000 id="hRcontent"
+												name="hRcontent" placeholder="댓글을 입력해 주세요."></textarea> <br>
+											<input type="hidden" name="hRcnum"
+											value="${admin_inquirycontent.hInum}"> <input
+											type="hidden" name="hRname"
+											value="${admin_inquirycontent.hIid}"> <!-- 사용자 아이디-->
+										</td>
+									</tr>
+								</tbody>
+							</table>
 						</div>
-					</div>
-					<!-- //Btn Area -->
+
+						<!-- Btn Area -->
+						<div class="btnArea">
+							<div class="bRight">
+								<ul>
+									<li><a href="admin_inquirylist" class="sbtnMini mw">목록</a></li>
+									<li><a href="#" class="writeBtn" onclick="reply_write()">답글달기</a></li>
+									<li><a href="#" class="nbtnbig mw"
+										onclick="reply_modify()">수정</a></li>
+									<li><a href="#" class="nbtnbig mw"
+										onclick="reply_delete()">삭제</a></li>
+								</ul>
+							</div>
+						</div>
+						<!-- //Btn Area -->
+					</form>
+
 
 				</div>
 			</div>

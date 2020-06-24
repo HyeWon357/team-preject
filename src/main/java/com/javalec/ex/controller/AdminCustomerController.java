@@ -1,5 +1,11 @@
 package com.javalec.ex.controller;
 
+import java.awt.Image;
+import java.sql.Timestamp;
+import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
@@ -9,14 +15,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.javalec.ex.Dao.AdminDao;
 import com.javalec.ex.Dto.FDto;
+import com.javalec.ex.Dto.IDto;
+import com.javalec.ex.Dto.InquiryRDto;
 import com.javalec.ex.Dto.NDto;
 
 @Controller
-public class AdminController {
+public class AdminCustomerController {
 	
 	
 	@Autowired
@@ -85,6 +95,12 @@ public class AdminController {
 	@RequestMapping("admin/admin_inquirylist")
 	public String admin_inquirylist(Model model) {
 		
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.DAY_OF_MONTH, -2); //2일간 보이도록 하기 위해서
+		String nowday = format.format(cal.getTime());
+		model.addAttribute("nowday", nowday);
+		
 		AdminDao dao = sqlSession.getMapper(AdminDao.class);
 		model.addAttribute("admin_inquirylist", dao.admin_inquirylist());
 		return "admin/admin_inquirylist";
@@ -98,11 +114,46 @@ public class AdminController {
 		return "admin/admin_inquirycontent";
 	}
 	
-	@RequestMapping("admin/admin_inquirywrite")
-	public String admin_inquirywrite(Model model) {
-		
-		return "admin/admin_inquirywrite";
-	}
+	 @RequestMapping("admin/reply_list")
+	 @ResponseBody //json데이터로 페이지 리턴
+	 public List<InquiryRDto> reply_list(){
+	     
+		 AdminDao dao = sqlSession.getMapper(AdminDao.class);
+		 return dao.reply_list();
+   }
+	 
+//	 @RequestMapping("reply_delete")
+//	 @ResponseBody
+//	 public String reply_delete(@ModelAttribute InquiryRDto Rdto) {
+//		 
+//		 AdminDao dao = sqlSession.getMapper(AdminDao.class);
+//		 dao.reply_delete(Rdto);
+//		 return "success";
+//	 }
+//	 
+//	 @RequestMapping("reply_write")
+//	 @ResponseBody
+//	 public String reply_write(@ModelAttribute InquiryRDto Rdto) {
+//		 
+//		 AdminDao dao = sqlSession.getMapper(AdminDao.class);
+//		 dao.reply_write(Rdto);
+//		 return "success";
+//	 }
+
+	   
+//	@RequestMapping("admin/admin_inquiryreply")
+//	public String admin_inquiryreply(Model model) {
+//		
+//		return "admin/admin_inquiryreply";
+//	}
+//	
+//	@RequestMapping("admin/inquiryreply")
+//	public String inquiryreply(IDto idto, Model model) {
+//		
+//		AdminDao dao = sqlSession.getMapper(AdminDao.class);
+////		dao.inquiryreply(idto.gethInum(), idto.gethIcontent(), idto.gethIgroup(), idto.gethIindent());
+//		return "redirect:admin_inquirylist";
+//	}
 	
 	
 	

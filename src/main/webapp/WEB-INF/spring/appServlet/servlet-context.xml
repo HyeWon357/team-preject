@@ -58,16 +58,4 @@
 	
 	<context:component-scan base-package="com.javalec.ex" />
 	
-	 <beans:bean id="AdminInterceptor" class="com.javalec.ex.interceptor.AdminInterceptor" />
-
-	<interceptors>
-	 <interceptor>
-	  <mapping path="/member/list"/>
-	  <mapping path="/member/memberUpdateView"/>
-	  <beans:ref bean="AdminInterceptor" />
-	 </interceptor>
-	</interceptors> 
-	
-	
-	
 </beans:beans>

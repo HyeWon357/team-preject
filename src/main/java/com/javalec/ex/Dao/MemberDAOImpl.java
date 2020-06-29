@@ -1,4 +1,4 @@
-package com.javalec.ex.dao;
+package com.javalec.ex.Dao;
 
 import java.util.List;
 
@@ -7,7 +7,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.javalec.ex.dto.MemberDTO;
+import com.javalec.ex.Dto.MemberDTO;
+
 
 @Repository
 public class MemberDAOImpl implements MemberDAO {

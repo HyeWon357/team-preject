@@ -1,8 +1,9 @@
-package com.javalec.ex.dao;
+package com.javalec.ex.Dao;
 
 
 import java.util.List;
-import com.javalec.ex.dto.MemberDTO;
+
+import com.javalec.ex.Dto.MemberDTO;
 
 public interface MemberDAO {
 

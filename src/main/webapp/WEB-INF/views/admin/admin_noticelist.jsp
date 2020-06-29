@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -25,10 +27,6 @@
 <script type="text/javascript" src="../js/idangerous.swiper-2.1.min.js"></script>
 <script type="text/javascript" src="../js/jquery.anchor.js"></script>
 
-<script type="text/javascript">
-
-
-</script>
 
 </head>
 
@@ -126,21 +124,16 @@
 								<th scope="col">등록일</th>
 								<th scope="col" class="tnone">조회수</th>
 							</thead>
-
-
-							<tbody>
-								<c:forEach var="dto" items="${admin_noticelist }">
-									<tr>
-										<td class="tnone">${dto.hNnum}</td>
-										<td class="left"><a
-											href="admin_noticecontent?hNnum=${dto.hNnum}"> ${dto.hNtitle}</a>
-											<img src="../images/ico/ico_new.gif" alt="NEW" /></td>
-										<td>${dto.hNday }</td>
-										<td class="tnone right">${dto.hNhit }</td>
-									</tr>
-								</c:forEach>
-							</tbody>
-
+							<c:forEach var="dto" items="${admin_noticelist }" varStatus="status">
+								<tr>
+									<td class="tnone">${dto.hNnum}</td>
+									<td class="left"><a href="admin_noticecontent?hNnum=${dto.hNnum}">${dto.hNtitle}</a>
+										<img src="../images/ico/ico_new.gif" alt="NEW" />
+									</td>
+									<td><c:out value="${dto.hNday }" /></td>
+									<td class="tnone right">${dto.hNhit }</td>
+								</tr>
+							</c:forEach>
 						</table>
 					</div>
 
@@ -166,7 +159,7 @@
 						</div>
 					</div>
 
-						<!-- //페이징이동1 -->
+					<!-- //페이징이동1 -->
 					<div class="searchWrap">
 						<div class="search">
 							<ul>

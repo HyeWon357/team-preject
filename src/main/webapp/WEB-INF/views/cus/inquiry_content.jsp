@@ -26,9 +26,48 @@
 <script type="text/javascript" src="../js/respond.min.js"></script>
 <![endif]-->
 <script type="text/javascript">
-	$(document).ready(function() {
-
+	//html 페이지 모두 호출후에 jquery 실행
+	
+	var hRcnum = ${inquiry_content.hInum};
+	
+	$(function() {
+		getreplyList();
 	});
+
+	//답글 리스트
+	function getreplyList() {
+
+		$.ajax({
+					type : 'get', //http 요청방식 (get,post)
+					url : "./reply_list", //controller에서 호출 url주소
+					dataType : "json", //서버에 보내줄 데이터 타입
+					data : {hRcnum: hRcnum}, //controller로 보낼 데이터
+					contentType : "application/json; charset=UTF-8",
+					success : function(data) {
+
+						var html = "";
+						var Rlist = data.length; //list개수를 확인할 수 있다.
+						$("#Rlist").html(Rlist);
+
+						if (data.length > 0) {
+
+							for (var i = 0; i < data.length; i++) {
+								html += "<p id='writeForm"+ data[i].hRnum +"'> 담당자 <span> &emsp;"
+										+ data[i].hRcontent + "</span></p>";
+							}
+
+						} else {
+							html += "<p> 담당자 <span> 등록된 댓글이 없습니다. </span> </p>";
+						}
+
+						$('#REPLYLIST').html(html);
+
+					},
+					error : function(request, status, error) {
+						alert("실패" + error);
+					}
+				});
+	}
 </script>
 </head>
 <body>
@@ -96,6 +135,17 @@
 		var msiehide = function() {
 			$("#ieUser").hide();
 			clearTimeout(msietimer);
+		}
+
+		//삭제확인
+		function delete_check() {
+
+			if (confirm("정말 삭제하시겠습니까?") == true) { //확인
+				location.href = "inquiry_delete?hInum=${inquiry_content.hInum}";
+
+			} else { //취소
+				return;
+			}
 		}
 	</script>
 
@@ -243,13 +293,12 @@
 							<h2>
 								<strong>1:1문의</strong><span>쟈뎅에 궁금하신 사항을 남겨주시면 답변해드립니다.</span>
 							</h2>
-
 							<div class="viewDiv">
 								<div class="viewHead">
 									<div class="subject">
 										<ul>
 											<li class="cate">[기타]</li>
-											<li>${inquiry_content.hItitle}</li>
+											<li>${inquiry_content.hItitle }</li>
 										</ul>
 									</div>
 									<div class="day">
@@ -262,21 +311,20 @@
 									</div>
 								</div>
 
-								<div class="viewContents"><img src="upload/${inquiry_content.hIfile}">
-									${inquiry_content.hIcontent }
+
+
+								<div class="viewContents">${inquiry_content.hIcontent }
+									<br> <br> <img alt="img"
+										src="../uploadFile/${inquiry_content.hIfile }">
 								</div>
+
 							</div>
 
 							<!-- 답변 -->
 							<div class="answer">
 								<div class="inbox">
-									<div class="aname">
-										<p>
-											${inquiry_content.hIaname } <span>${inquiry_content.hIday}</span>
-										</p>
-									</div>
-
-									<div class="atxt" >${inquiry_content.hIstep}</div>
+									<div class="aname" id="REPLYLIST"></div>
+									<div class="atxt"></div>
 								</div>
 							</div>
 							<!-- //답변 -->
@@ -318,9 +366,12 @@
 							<div class="btnArea">
 								<div class="bRight">
 									<ul>
-										<li><a href="#" class="nbtnbig mw">수정</a></li>
-										<li><a href="#" class="nbtnbig mw">삭제</a></li>
 										<li><a href="inquiry_list" class="sbtnMini mw">목록</a></li>
+										<li><a
+											href="inquiry_modify?hInum=${inquiry_content.hInum}"
+											class="nbtnbig mw">수정</a></li>
+										<li><a href="#" class="nbtnbig mw"
+											onclick="delete_check()">삭제</a></li>
 									</ul>
 								</div>
 							</div>

@@ -10,6 +10,7 @@ public class NDto {
 	String hNcontent;
 	Timestamp hNday;
 	int hNhit;
+	int isDay; //현재 날짜
 	
 	public NDto() {
 		
@@ -22,6 +23,7 @@ public class NDto {
 		this.hNcontent = hNcontent;
 		this.hNday = hNday;
 		this.hNhit = hNhit;
+		this.setIsDay();
 	}
 
 	
@@ -72,7 +74,20 @@ public class NDto {
 	public void sethNhit(int hNhit) {
 		this.hNhit = hNhit;
 	}
-	
-	
-	
+
+	public int getIsDay() {
+		this.setIsDay();
+		return isDay;
+	}
+
+	public void setIsDay() {
+		
+		if(System.currentTimeMillis() - this.hNday.getTime() >= 86400000) { //1000 - 1s, 86400000 - 24h
+			this.isDay = 1;
+			
+		}else {
+			this.isDay = 0;
+		}
+		
+	}
 }

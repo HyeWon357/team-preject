@@ -134,7 +134,7 @@
 			<version>4.1.4.RELEASE</version>
 		</dependency>
 
-		<!-- mybatis -->
+			<!-- mybatis -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
@@ -150,7 +150,7 @@
 		
 
 
-		<!-- file upload -->
+			<!-- file upload -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>

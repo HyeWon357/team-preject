@@ -103,7 +103,7 @@ $(document).ready(function() {
 			</div>
 			<div id="snb">
 				<ul>
-					<li><a href="#">LOGIN</a></li>
+					<li><a href="login">LOGIN</a></li>
 					<li><a href="#">JOIN</a></li>
 					<li><a href="#">MY PAGE</a></li>
 					<li><a href="#">CART</a></li>
@@ -199,8 +199,8 @@ $(document).ready(function() {
 			<div id="left">
 				<div id="title2">MEMBERSHIP<span>멤버쉽</span></div>
 				<ul>	
-					<li><a href="#" id="leftNavi1">로그인</a></li>
-					<li><a href="#" id="leftNavi2">회원가입</a></li>
+					<li><a href="login" id="leftNavi1">로그인</a></li>
+					<li><a href="agree" id="leftNavi2">회원가입</a></li>
 					<li><a href="#" id="leftNavi3">아이디/<span>비밀번호 찾기</span></a></li>
 					<li><a href="#" id="leftNavi4">회원약관</a></li>
 					<li><a href="#" id="leftNavi5">개인정보<span>취급방침</span></a></li>
@@ -241,7 +241,7 @@ $(document).ready(function() {
 					
 					<div class="celebrate">	
 						<div class="img"><img src="../images/txt/txt_celebrate01.png" alt="JARDIN THECOFFEE CERATOR, SINCE 1984" /></div>
-						<p class="thx"><span>${dto.d_id} 님 환영합니다!</span></p>
+						<p class="thx"><span>${dto.d_name} 님 환영합니다!</span></p>
 						
 						<p class="thx">감사합니다. <span>회원가입이 완료되었습니다.</span></p>
 						<p class="txt">

@@ -108,7 +108,7 @@
 	<div id="header">
 		
 		<div id="snbBox">
-			<h1><img src="../images/txt/logo.gif" alt="JARDIN SHOP" /></h1>
+			<a href="main"><h1><img src="../images/txt/logo.gif" alt="JARDIN SHOP" /></h1></a>
 			<div id="quickmenu">
 				<div id="mnaviOpen"><img src="../images/btn/btn_mnavi.gif" width="33" height="31" alt="메뉴열기" /></div>
 				<div id="mnaviClose"><img src="../images/btn/btn_mnavi_close.gif" width="44" height="43" alt="메뉴닫기" /></div>
@@ -216,16 +216,16 @@
 			<div id="left">
 				<div id="title2">MEMBERSHIP<span>멤버쉽</span></div>
 				<ul>	
-					<li><a href="#" id="leftNavi1">로그인</a></li>
-					<li><a href="#" id="leftNavi2">회원가입</a></li>
-					<li><a href="#" id="leftNavi3">아이디/<span>비밀번호 찾기</span></a></li>
+					<li><a href="login" id="leftNavi1">로그인</a></li>
+					<li><a href="signUp" id="leftNavi2">회원가입</a></li>
+					<li><a href="idsearch" id="leftNavi3">아이디/<span>비밀번호 찾기</span></a></li>
 					<li><a href="#" id="leftNavi4">회원약관</a></li>
 					<li><a href="#" id="leftNavi5">개인정보<span>취급방침</span></a></li>
 					<li class="last"><a href="#" id="leftNavi6">이메일무단<span>수집거부</span></a></li>
 				</ul>			
 			</div><script type="text/javascript">initSubmenu(2,0);</script>
 
-		<form action="signUp" name="form" method="post">
+		<form action="signUp" name="form" method="get">
 			<!-- contents -->
 			<div id="contents">
 				<div id="member">
@@ -264,8 +264,6 @@
 						</ul>
 					</div>
 
-	
-	
 			
 					<div class="agreeWrap">
 						<div class="agreeTxt">이용약관 동의 <span>(필수동의)</span></div>

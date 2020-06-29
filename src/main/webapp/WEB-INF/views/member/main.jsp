@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -153,7 +154,7 @@ $(document).ready(function() {
 	<div id="header">
 		
 		<div id="snbBox">
-			<h1><img src="../images/txt/logo.gif" alt="JARDIN SHOP" /></h1>
+			<h1><a href="main"><img src="../images/txt/logo.gif" alt="JARDIN SHOP" /></a></h1>
 			<div id="quickmenu">
 				<div id="mnaviOpen"><img src="../images/btn/btn_mnavi.gif" width="33" height="31" alt="메뉴열기" /></div>
 				<div id="mnaviClose"><img src="../images/btn/btn_mnavi_close.gif" width="44" height="43" alt="메뉴닫기" /></div>
@@ -165,9 +166,43 @@ $(document).ready(function() {
 			</div>
 			<div id="snb">
 				<ul>
+				
+				<c:if test="${member == null }"> 
 					<li><a href="login">LOGIN</a></li>
+				</c:if>
+				
+				<c:if test="${member != null }"> 
+				
+					<!--관리자 -->
+					<c:if test="${member.verify == 9}">
+						<li><a href="list">${member.d_name}</a></li>
+						<li><a href="logout">LOGOUT</a></li>
+					</c:if>
+					
+					<!-- 고객 --> 
+					<c:if test="${member.verify == 0}">
+						<li>${member.d_name}</li>
+						<li><a href="logout">LOGOUT</a></li>
+					</c:if>
+					
+				</c:if>
+				
+				
+				<!--  
+				<c:choose>
+					<c:when test="${member == null }">
+					<li><a href="login">LOGIN</a></li>
+					</c:when>
+					<c:otherwise>
+						${member.d_id}님
+						<li><a href="logout">LOGOUT</a></li>
+					</c:otherwise>
+				</c:choose>
+				-->
 					<li><a href="#">JOIN</a></li>
-					<li><a href="#">MY PAGE</a></li>
+					
+					<li><a href="memberUpdateView">MY PAGE</a></li>
+					
 					<li><a href="#">CART</a></li>
 				</ul>
 
@@ -185,7 +220,7 @@ $(document).ready(function() {
 		
 		<div id="top">
 			<ul>
-				<li class="brand t1"><a href="#" id="topNavi1">JARDIN’s BRAND</a>
+				<li class="brand t1"><a href="main" id="topNavi1">JARDIN’s BRAND</a>
 					<ul id="topSubm1">
 						<li><a href="#">클래스</a></li>
 						<li><a href="#">홈스타일 카페모리</a></li>

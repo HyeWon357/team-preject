@@ -12,6 +12,7 @@
 <link rel="stylesheet" type="text/css" href="../css/reset.css?v=Y" />
 <link rel="stylesheet" type="text/css" href="../css/layout.css?v=Y" />
 <link rel="stylesheet" type="text/css" href="../css/content.css?v=Y" />
+<script src= "http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="../js/top_navi.js"></script>
 <script type="text/javascript" src="../js/left_navi.js"></script>
@@ -31,6 +32,15 @@ $(document).ready(function() {
 
 });
 </script>
+
+		<!-- 아이디찾기 -->
+	<!-- 	<script type="text/javascript">
+			$(function)(){
+				$("#find_id_btn").click(function(){
+					location.href='member/idsearch';
+				})
+			})
+		</script> -->
 </head>
 <body>
 
@@ -85,13 +95,15 @@ $(document).ready(function() {
      }
 </script>
 
+		
+
 <div id="allwrap">
 <div id="wrap">
 
 	<div id="header">
 		
 		<div id="snbBox">
-			<h1><img src="../images/txt/logo.gif" alt="JARDIN SHOP" /></h1>
+			<a href="main"><h1><img src="../images/txt/logo.gif" alt="JARDIN SHOP" /></h1></a>
 			<div id="quickmenu">
 				<div id="mnaviOpen"><img src="../images/btn/btn_mnavi.gif" width="33" height="31" alt="메뉴열기" /></div>
 				<div id="mnaviClose"><img src="../images/btn/btn_mnavi_close.gif" width="44" height="43" alt="메뉴닫기" /></div>
@@ -199,8 +211,8 @@ $(document).ready(function() {
 			<div id="left">
 				<div id="title2">MEMBERSHIP<span>멤버쉽</span></div>
 				<ul>	
-					<li><a href="#" id="leftNavi1">로그인</a></li>
-					<li><a href="#" id="leftNavi2">회원가입</a></li>
+					<li><a href="login" id="leftNavi1">로그인</a></li>
+					<li><a href="agree" id="leftNavi2">회원가입</a></li>
 					<li><a href="#" id="leftNavi3">아이디/<span>비밀번호 찾기</span></a></li>
 					<li><a href="#" id="leftNavi4">회원약관</a></li>
 					<li><a href="#" id="leftNavi5">개인정보<span>취급방침</span></a></li>
@@ -214,16 +226,20 @@ $(document).ready(function() {
 				<div id="member">
 					<h2><strong>아이디/비밀번호 찾기</strong><span>회원님께서 가입하신 아이디와 비밀번호를 찾아드립니다.</span></h2>
 					<h3>아이디 찾기</h3>
+					
+				<form action="">
 					<div class="informbox">
 						<div class="inform">
 							<ul>
-								<li><input type="text" class="nameType" onfocus="this.className='mfocus'" onblur="if (this.value.length==0) {this.className='nameType'}else {this.className='mfocusnot'}" style="ime-mode:inactive;" /></li>
-								<li><input type="password" class="emailType" onfocus="this.className='mfocus'" onblur="if (this.value.length==0) {this.className='emailType'}else {this.className='mfocusnot'}" style="ime-mode:inactive;" /></li>
+								<li><input type="text" class="nameType" id="find_id_btn" onfocus="this.className='mfocus'" onblur="if (this.value.length==0) {this.className='nameType'}else {this.className='mfocusnot'}" style="ime-mode:inactive;" /></li>
+								<li><input type="text" class="emailType" onfocus="this.className='mfocus'" onblur="if (this.value.length==0) {this.className='emailType'}else {this.className='mfocusnot'}" style="ime-mode:inactive;" /></li>
 							</ul>
-
-							<div class="btn"><a href="#" class="gbtn">아이디 찾기</a></div>
+							
+							<div class="btn"><button type="submit" id="findBtn" class="gbtn">아이디 찾기</button></div>
+							<!-- <div class="btn"><a href="#" class="gbtn">아이디 찾기</a></div>-->
 						</div>
 					</div>
+				</form>
 
 
 
@@ -284,8 +300,6 @@ $(document).ready(function() {
 			</div>
 		</div>
 	</div>
-
-
 
 </div>
 </div>

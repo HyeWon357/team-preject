@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -91,7 +92,7 @@ $(document).ready(function() {
 	<div id="header">
 		
 		<div id="snbBox">
-			<h1><img src="../images/txt/logo.gif" alt="JARDIN SHOP" /></h1>
+			<h1><a href="main"><img src="../images/txt/logo.gif" alt="JARDIN SHOP" /></a></h1>
 			<div id="quickmenu">
 				<div id="mnaviOpen"><img src="../images/btn/btn_mnavi.gif" width="33" height="31" alt="메뉴열기" /></div>
 				<div id="mnaviClose"><img src="../images/btn/btn_mnavi_close.gif" width="44" height="43" alt="메뉴닫기" /></div>
@@ -103,7 +104,7 @@ $(document).ready(function() {
 			</div>
 			<div id="snb">
 				<ul>
-					<li><a href="#">LOGIN</a></li>
+					<li><a href="login">LOGIN</a></li>
 					<li><a href="#">JOIN</a></li>
 					<li><a href="#">MY PAGE</a></li>
 					<li><a href="#">CART</a></li>
@@ -201,7 +202,7 @@ $(document).ready(function() {
 				<ul>	
 					<li><a href="#" id="leftNavi1">로그인</a></li>
 					<li><a href="agree" id="leftNavi2">회원가입</a></li>
-					<li><a href="#" id="leftNavi3">아이디/<span>비밀번호 찾기</span></a></li>
+					<li><a href="idsearch" id="leftNavi3">아이디/<span>비밀번호 찾기</span></a></li>
 					<li><a href="#" id="leftNavi4">회원약관</a></li>
 					<li><a href="#" id="leftNavi5">개인정보<span>취급방침</span></a></li>
 					<li class="last"><a href="#" id="leftNavi6">이메일무단<span>수집거부</span></a></li>
@@ -216,37 +217,29 @@ $(document).ready(function() {
 					<h3>회원 로그인</h3>
 					<div class="informbox">
 						<div class="inform">
-						<form action="" method="post">
+						
+						<c:if test="${member == null }">
+						<form action="login" method="post">
 							<ul>
 								<li><input type="text" name="d_id" class="loginType" onfocus="this.className='mfocus'" onblur="if (this.value.length==0) {this.className='loginType'}else {this.className='mfocusnot'}" style="ime-mode:inactive;" /></li>
 								<li><input type="password" name="d_pw" class="passType" onfocus="this.className='mfocus'" onblur="if (this.value.length==0) {this.className='passType'}else {this.className='mfocusnot'}" style="ime-mode:inactive;" /></li>
 							</ul>
-
-							<div class="btn"><a href="#" class="sbtn">로그인</a></div>
+							<div class="btn">
+							<button class="sbtn" type="submit">로그인</button>
+							</div>
+							<!--  <div class="btn"><a href="step04" class="sbtn">로그인</a></div>-->
 						</form>
+						</c:if>
+						
+						<c:if test="${msg == false }">
+							<p style="color:#f00;">로그인 정보가 잘못되었습니다.</p>
+						</c:if>
+							
 							<div class="chk"><input type="checkbox" id="idsave"/><label for="idsave">아이디 저장</label></div>							
 
 							<div class="point">
 								<p>아이디와 비밀번호를 잊으셨나요?</p>
-								<a href="#" class="nbtn">아이디/비밀번호 찾기</a>
-							</div>
-						</div>
-					</div>
-
-
-
-					<h3>비회원 주문 조회</h3>
-					<div class="informbox">
-						<div class="inform">
-							<ul>
-								<li><input type="text" class="ordererType" onfocus="this.className='mfocus'" onblur="if (this.value.length==0) {this.className='ordererType'}else {this.className='mfocusnot'}" /></li>
-								<li><input type="text" class="ordernumType" onfocus="this.className='mfocus'" onblur="if (this.value.length==0) {this.className='ordernumType'}else {this.className='mfocusnot'}" /></li>
-							</ul>
-
-							<div class="btn"><a href="#" class="gbtn">조회하기</a></div>
-							<div class="point">
-								<p>아직 JARDIN 회원이 아니신가요? <span>회원가입하시고 다양한 혜택을 받으세요.</span></p>
-								<a href="#" class="nbtn">회원가입</a>
+								<a href="idsearch" class="nbtn">아이디/비밀번호 찾기</a>
 							</div>
 						</div>
 					</div>

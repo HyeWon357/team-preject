@@ -1,6 +1,6 @@
-package com.javalec.ex.Dto;
+package com.javalec.ex.dto;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class MemberDTO {
 	
@@ -10,7 +10,7 @@ public class MemberDTO {
 	
 	public MemberDTO(String d_name, String d_id, String d_pw, String d_email1, String d_email2, String d_email_check, String d_zipcode,
 			String d_address, String d_phone1, String d_phone2, String d_phone3, String d_sms, String d_tel1, String d_tel2, String d_tel3,
-			String d_birth_yy, String d_birth_mm, String d_birth_dd, String d_sl, Date d_date) {
+			String d_birth_yy, String d_birth_mm, String d_birth_dd, String d_sl, Timestamp d_date, int verify) {
 		
 		this.d_name=d_name;
 		this.d_id=d_id;
@@ -32,6 +32,7 @@ public class MemberDTO {
 		this.d_birth_dd=d_birth_dd;
 		this.d_sl=d_sl;
 		this.d_date=d_date;
+		this.verify=verify;
 	}
 	
 	
@@ -54,9 +55,8 @@ public class MemberDTO {
 	private String d_birth_mm;
 	private String d_birth_dd;
 	private String d_sl;
-	private Date d_date;
-	
-	
+	private Timestamp d_date;
+	private int verify;
 	public String getD_name() {
 		return d_name;
 	}
@@ -209,12 +209,32 @@ public class MemberDTO {
 		this.d_sl = d_sl;
 	}
 
-	public Date getD_date() {
+	public Timestamp getD_date() {
 		return d_date;
 	}
 
-	public void setD_date(Date d_date) {
+	public void setD_date(Timestamp d_date) {
 		this.d_date = d_date;
 	}
+
+	public int getVerify() {
+		return verify;
+	}
+
+	public void setVerify(int verify) {
+		this.verify = verify;
+	}
+
+	@Override
+	public String toString() {
+		return "MemberDTO [d_name=" + d_name + ", d_id=" + d_id + ", d_pw=" + d_pw + ", d_email1=" + d_email1
+				+ ", d_email2=" + d_email2 + ", d_email_check=" + d_email_check + ", d_zipcode=" + d_zipcode
+				+ ", d_address=" + d_address + ", d_phone1=" + d_phone1 + ", d_phone2=" + d_phone2 + ", d_phone3="
+				+ d_phone3 + ", d_sms=" + d_sms + ", d_tel1=" + d_tel1 + ", d_tel2=" + d_tel2 + ", d_tel3=" + d_tel3
+				+ ", d_birth_yy=" + d_birth_yy + ", d_birth_mm=" + d_birth_mm + ", d_birth_dd=" + d_birth_dd + ", d_sl="
+				+ d_sl + ", d_date=" + d_date + ", verify=" + verify + "]";
+	}
+	
+	
 	
 }

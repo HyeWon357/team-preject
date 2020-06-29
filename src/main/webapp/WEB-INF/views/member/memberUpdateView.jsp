@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-        <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-    
 <!DOCTYPE html>
 <html>
-<head> 
+<head>
 <title> JARDIN SHOP </title>
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -14,8 +12,6 @@
 <link rel="stylesheet" type="text/css" href="../css/reset.css?v=Y" />
 <link rel="stylesheet" type="text/css" href="../css/layout.css?v=Y" />
 <link rel="stylesheet" type="text/css" href="../css/content.css?v=Y" />
-<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
-<!-- <script type="text/javascript" src="code.jquery.com/jquery-3.2.1.main.js"></script> -->
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="../js/top_navi.js"></script>
 <script type="text/javascript" src="../js/left_navi.js"></script>
@@ -24,19 +20,17 @@
 <script type="text/javascript" src="../js/jquery.easing.1.3.js"></script>
 <script type="text/javascript" src="../js/idangerous.swiper-2.1.min.js"></script>
 <script type="text/javascript" src="../js/jquery.anchor.js"></script>
-
-<!-- 다음 API -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<!-- <script src="/resources/js/addressapi.js"></script> -->
+<script src="/resources/js/addressapi.js"></script>
 <!--[if lt IE 9]>
 <script type="text/javascript" src="../js/html5.js"></script>
 <script type="text/javascript" src="../js/respond.min.js"></script>
 <![endif]-->
 <script type="text/javascript">
- $(document).ready(function() {
+$(document).ready(function() {
 
 
-}) 
+});
 
 function join_check() {
 	
@@ -61,12 +55,6 @@ function join_check() {
 	if(join.d_pw.value=="") {
         alert("비밀번호를 입력하세요.");
         join.d_pw.focus();
-        return false;
-    }
-	
-	if(join.pw_check.value=="") {
-        alert("비밀번호를 입력하세요.");
-        join.pw_check.focus();
         return false;
     }
 	
@@ -135,45 +123,15 @@ function join_check() {
 		join.d_pw.focus();
 		return false;
 	}
-
-	
 	
 	return join.submit();
 	
 } //join_check()
-			 //ajax
-		 	function fn_idChk(){
-					
-			 		$.ajax({
-						url : "idChk",
-						type : "post",
-						dataType : "json",
-						data : {"d_id" : $("#d_id").val()},
-						success : function(data){
-							if(data == 1){
-								alert("중복된 아이디입니다.");
-							}else if(data == 0){
-								$("#idChk").attr("value", "Y");
-								alert("사용가능한 아이디입니다.");
-								
-							}
-						}
-					}) 
-				}
-				
-			$("#join").on("click", function(){
-				
-				var idChkVal = $("#idChk").val();
-				
-				if(idChkVal == "N"){
-					alert("중복확인 버튼을 눌러주세요.");
-					return false;
-				}else if(idChkVal == "Y"){
-					$("#join").submit();
-				}
-			});
 
-	
+
+ //ajax
+
+
 //zipcode
 function execPostCode() {
          new daum.Postcode({
@@ -218,6 +176,7 @@ function execPostCode() {
          }).open();
      }
      
+     
     //이메일 
 function email_change(){
 
@@ -241,13 +200,12 @@ function email_change(){
 	}
 
 	}
-     
-     
 
 </script>
-
 </head>
 <body>
+
+
 
 <!--익스레이어팝업-->
 <div id="ieUser" style="display:none">
@@ -304,7 +262,7 @@ function email_change(){
 	<div id="header">
 		
 		<div id="snbBox">
-			<a href="main"><h1><img src="../images/txt/logo.gif" alt="JARDIN SHOP" /></h1></a>
+			<h1><a href="main"><img src="../images/txt/logo.gif" alt="JARDIN SHOP" /></a></h1>
 			<div id="quickmenu">
 				<div id="mnaviOpen"><img src="../images/btn/btn_mnavi.gif" width="33" height="31" alt="메뉴열기" /></div>
 				<div id="mnaviClose"><img src="../images/btn/btn_mnavi_close.gif" width="44" height="43" alt="메뉴닫기" /></div>
@@ -316,7 +274,7 @@ function email_change(){
 			</div>
 			<div id="snb">
 				<ul>
-					<li><a href="#">LOGIN</a></li>
+					<li><a href="login">LOGIN</a></li>
 					<li><a href="#">JOIN</a></li>
 					<li><a href="#">MY PAGE</a></li>
 					<li><a href="#">CART</a></li>
@@ -329,6 +287,7 @@ function email_change(){
 			</div>
 		</div>
 	</div>
+
 
 	<!-- GNB -->
 	<div id="gnb">
@@ -398,71 +357,52 @@ function email_change(){
 
 	<!-- container -->
 	<div id="container">
-	
+
 		<div id="location">
 			<ol>
 				<li><a href="#">HOME</a></li>
-				<li><a href="#">MEMBERSHIP</a></li>
-				<li class="last">회원가입</li>
+				<li><a href="#">MY PAGE</a></li>
+				<li class="last">회원정보 수정</li>
 			</ol>
 		</div>
 		
 		<div id="outbox">		
 			<div id="left">
-				<div id="title2">MEMBERSHIP<span>멤버쉽</span></div>
+				<div id="title">MY PAGE<span>마이페이지</span></div>
 				<ul>	
-					<li><a href="login" id="leftNavi1">로그인</a></li>
-					<li><a href="signUp" id="leftNavi2">회원가입</a></li>
-					<li><a href="#" id="leftNavi3">아이디/<span>비밀번호 찾기</span></a></li>
-					<li><a href="#" id="leftNavi4">회원약관</a></li>
-					<li><a href="#" id="leftNavi5">개인정보<span>취급방침</span></a></li>
-					<li class="last"><a href="#" id="leftNavi6">이메일무단<span>수집거부</span></a></li>
+					<li><a href="#" id="leftNavi1">주문/배송 조회</a></li>
+					<li><a href="#" id="leftNavi2">반품/배송 현황</a></li>
+					<li><a href="#" id="leftNavi3">장바구니</a></li>
+					<li><a href="#" id="leftNavi4">위시리스트</a></li>
+					<li><a href="#" id="leftNavi5">나의 쿠폰</a></li>
+					<li><a href="#" id="leftNavi6">나의 포인트</a></li>
+					<li><a href="#" id="leftNavi7">1:1문의</a></li>
+					<li><a href="#" id="leftNavi8">회원정보 수정</a></li>
+					<li class="last"><a href="#" id="leftNavi9">회원 탈퇴</a></li>
 				</ul>			
-			</div><script type="text/javascript">initSubmenu(2,0);</script>
+			</div><script type="text/javascript">initSubmenu(8,0);</script>
 
 
 			<!-- contents -->
 			<div id="contents">
-				<div id="member">
-					<h2><strong>회원가입</strong><span>회원으로 가입하시면 보다 더 다양한 혜택을 누리실 수 있습니다.</span></h2>
+				<div id="mypage">
+					<h2><strong>회원정보 수정</strong><span>회원님의 개인 정보를 수정하실 수 있습니다.</span></h2>
 					
-					<!-- STEP -->
-					<div class="stepWrap">
-						<div class="step">
-							<p class="web">STEP 01</p>
-							<p class="txt">실명확인</p>
-						</div>
-
-						<div class="step">
-							<p class="web">STEP 02</p>
-							<p class="txt">약관 동의</p>
-						</div>
-
-						<div class="step stepon">
-							<p class="web">STEP 03</p>
-							<p class="txt"><span>회원정보</span> <span>입력</span></p>
-							<p class="ck"><img src="../images/bg/bg_step.png" alt="현재위치" /></p>
-						</div>
-
-						<div class="step">
-							<p class="web">STEP 04</p>
-							<p class="txt"><span>회원가입</span> <span>완료</span></p>
-						</div>
-					</div>
-					<!-- //STEP -->
-						
 
 					<div class="attention">
 						<ul>
-							<li>* 표시된 항목은 필수 항목이므로 반드시 입력하셔야 회원가입이 진행됩니다.</li>
+							<li>* 표시된 항목은 필수 항목이므로 반드시 입력하셔야 합니다.</li>
 						</ul>
 					</div>
 
 
 					<div class="memberbd">
 					
-					<form name="join"  method="post">
+					<!--회원정보수정  -->
+					
+					
 						
+					<form name="join" method="post">
 						<table summary="이름, 아이디, 비밀번호, 비밀번호 확인, 이메일, 이메일수신여부, 주소, 휴대폰, 유선전화, 생년월일 순으로 회원가입 정보를 등록할수 있습니다." class="memberWrite" border="1" cellspacing="0">
 						
 							<caption>회원가입 입력</caption>
@@ -479,7 +419,7 @@ function email_change(){
 									<th scope="row"><span>이름 *</span></th>
 									<td>
 										<ul class="pta">
-											<li class="r10"><input type="text" name="d_name" class="w134" /></li>
+											<li class="r10"><input type="text" id="d_name" name="d_name" value="${member.d_name}" class="w134" /></li>
 										</ul>
 									</td>
 								</tr>
@@ -487,10 +427,8 @@ function email_change(){
 									<th scope="row"><span>아이디 *</span></th>
 									<td>
 										<ul class="pta">
-											<li class="r10"><input type="text" name="d_id" id="d_id" class="w134" /></li>
+											<li class="r10"><input type="text" id="d_id" name="d_id" value="${member.d_id}" class="w134" readonly="readonly" /></li>
 											
-											<li><button type="button" class="idChk" id="idChk" onclick="fn_idChk();" value="N" >중복확인</button></li>
-											<li class="pt5"><span class="mvalign">4~16자의 영문 소문자, 숫자와 특수기호(_)만 입력가능하며 첫번째 문자는 영문만 가능합니다.</span></li>
 										</ul>
 									</td>
 								</tr>
@@ -499,36 +437,24 @@ function email_change(){
 									<th scope="row"><span>비밀번호 *</span></th>
 									<td>
 										<ul class="pta">
-											<li class="r10"><input type="password" name="d_pw" class="w134" /></li>
+											<li class="r10"><input type="password" id="d_pw" name="d_pw" class="w134" /></li>
 											<li><span class="mvalign">※ 6~12자의 영문 대소문자, 숫자 및 특수기호 사용 가능합니다.</span></li>
 										</ul>
 									</td>
 								</tr>
-								
-								<tr>
-									<th scope="row"><span>비밀번호 확인 *</span></th>
-									<td>
-										<ul class="pta">
-											<li class="r10"><input type="password" name="pw_check" class="w134" /></li>
-											<!-- <li>
-												<span class="mvalign black">* 비밀번호가 일치입니다.</span>
-												<span class="mvalign orange">* 비밀번호가 일치하지 않습니다.</span>
-											</li> -->
-										</ul>
-									</td>
-								</tr>
+							
 								<tr>
 									<th scope="row"><span>이메일</span></th>
 									<td>
 										<ul class="pta">
 										
 											<!-- email1 -->
-											<li><input type="email" id="d_email1" name="d_email1" onfocus="this.value='';" value="이메일" class="w134" /></li>
+											<li><input type="text" id="d_email1" name="d_email1" value="${member.d_email1}" onfocus="this.value='';" value="이메일" class="w134" /></li>
 											
 											<li><span class="valign">&nbsp;@&nbsp;</span></li>
 											
 											<!-- email2 -->
-											<li class="r10"><input type="email" id="d_email2" name="d_email2" value="" class="w134" /></li>
+											<li class="r10"><input type="text" id="d_email2" name="d_email2" value="${member.d_email2 }" class="w134" /></li>
 											<li>
 												<select id="emailList" name="emailList" onchange="email_change()">
 													<option value="">선택하세요</option>
@@ -574,7 +500,7 @@ function email_change(){
 										<ul class="pta">
 											<li>
 											
-												<input type="text" id="d_zipcode" name="d_zipcode" class="w134" />&nbsp;
+												<input type="text" id="d_zipcode" name="d_zipcode" class="w134" value="${member.d_zipcode}"/>&nbsp;
 											</li>
 											
 											<button type="button" onclick="execPostCode();">우편번호 찾기</button>
@@ -718,22 +644,25 @@ function email_change(){
 								
 							</tbody>
 							</table>
+							<div class="btnArea">
+						<div class="bCenter">
+							<ul>
+								<li><a href="login" class="nbtnbig">취소하기</a></li>
+								<button type="submit" class="sbtnMini">수정하기</button>
+								<!--<li><a href="#" class="sbtnMini">수정하기</a></li>-->
+							</ul>
+						</div>
+					</div>
 							
 					</form>
+							
 						</div>
 
 					</div>
 
 					
 					<!-- Btn Area -->
-					<div class="btnArea">
-						<div class="bCenter">
-							<ul>
-								<li><a href="login" class="nbtnbig">취소하기</a></li>
-								<li><input type="button" onclick="join_check()" class="sbtnMini" id="submit" value="가입하기" style="cursor: pointer; border:none"></li>
-							</ul>
-						</div>
-					</div>
+					
 					<!-- //Btn Area -->
 
 
@@ -741,20 +670,7 @@ function email_change(){
 <link rel="stylesheet" type="text/css" href="../css/jquery.fancybox-1.3.4.css" />
 <script type="text/javascript">
 $(function(){
-
-	// business input
-	var firstchk = $("input:radio[name=business]:checked").attr("id");
-	$(".businessTy").css("display","none");
-	$("#partner").click(function(){
-		$(".businessTy").css("display","block");
-	});
-	$("#general").click(function(){
-		$(".businessTy").css("display","none");
-	});
-	$("#"+firstchk).click();
 	
-
-	// popup
 	var winWidth = $(window).width();
 	if(winWidth > 767){
 		var layerCheck = 540;
@@ -762,7 +678,7 @@ $(function(){
 		var layerCheck = 320;
 	}
 
-	$(".addressBtn").fancybox({
+	$(".addressBtn, .nbtnMini").fancybox({
 		'autoDimensions'    : false,
 		'showCloseButton'	: false,
 		'width' : layerCheck,
@@ -817,10 +733,14 @@ $(function(){
 						<li class="copy">COPYRIGHT © 2014 JARDIN <span>ALL RIGHTS RESERVED.</span></li>
 					</ul>
 				</address>
+
 				<div id="inicis"><img src="../images/ico/ico_inicis.png" alt="이니시스 결제시스템" /></div>
-			</div>	
+			</div>
 		</div>
 	</div>
+
+
+
 </div>
 </div>
 </body>

@@ -16,7 +16,16 @@
    	<update id="notice_upHit">
    		update notice set hNhit=hNhit+1 where hNnum=#{param1}
    	</update>
-   
+   	
+   	<select id="notice_prev" resultType="com.javalec.ex.Dto.NDto">
+		select * from notice where hNnum = (select max(hNnum) from notice where hNnum &lt; #{param1})
+   	</select>
+   	
+   	<select id="notice_next" resultType="com.javalec.ex.Dto.NDto">
+   		select * from notice where hNnum = (select min(hNnum) from notice where hNnum &gt; #{param1})
+   	</select>
+   	
+   	
    
 	<!-- inquiry -->
 	<select id="inquiry_list" resultType="com.javalec.ex.Dto.IDto">
@@ -28,8 +37,8 @@
 	</select>
 	
 	<insert id="Uinquirywrite">
-		insert into inquiry values(inquiry_seq.nextval, #{param1}, #{param2}, #{param3}, #{param4}, sysdate, inquiry_seq.currval,0)
-	 </insert>
+		insert into inquiry values(inquiry_seq.nextval, #{param1}, #{param2}, #{param3}, #{param4}, sysdate)
+	</insert>
 	 
 	 <delete id="inquiry_delete">
 	 	delete from inquiry where hInum=#{param1}
@@ -44,7 +53,7 @@
 	 </update>
 	 
 	 <select id="reply_list" resultType="com.javalec.ex.Dto.InquiryRDto">
-		select * from inquiryR order by hRday desc
+		select * from inquiryR where hRcnum=#{hRcnum}
 	</select>
 	 
 	 

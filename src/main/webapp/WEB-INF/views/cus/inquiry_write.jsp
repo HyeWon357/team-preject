@@ -110,9 +110,9 @@
 		//유효성 검사
 		function all_check() {
 
-			if(iw.hIname.value == "") {
+			if(iw.hid.value == "") {
 				alert("작성자를 입력해 주세요.");
-				iw.hIname.focus();
+				iw.hid.focus();
 				return false;
 			}
 			
@@ -298,8 +298,8 @@
 
 										<tbody>
 											<tr>
-												<th scope="row"><span>작성자</span></th>
-												<td><input type="text" class="wlong" name="hIname"
+												<th scope="row"><span>작성자 ID</span></th>
+												<td><input type="text" class="wlong" name="hid"
 													maxlength=20 /></td>
 											</tr>
 
@@ -323,7 +323,7 @@
 											</tr>
 											<tr>
 												<th scope="row"><span>첨부파일</span></th>
-												<td><input type="file" class="fileType" name="hIfile" axlength=100 id="hIfile"/></td>
+												<td><input type="file" class="fileType" name="hIfile" maxlength=100 id="hIfile"/></td>
 											</tr>
 										</tbody>
 									</table>

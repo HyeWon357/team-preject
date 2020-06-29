@@ -19,18 +19,19 @@ public interface AdminDao {
 	public NDto admin_noticemodify(String hNnum);
 	public void noticemodify(String hNtitle, String hNcontent, int hNnum);
 	
+	//이전글, 다음글
+	public NDto notice_prev(int hNnum);
+	public NDto notice_next(int hNnum);
+	
 	//1:1문의
 	public ArrayList<IDto> admin_inquirylist();
 	public IDto admin_inquirycontent(String hInum);
-//	public IDto admin_inquiryreply(int hInum);
-//	public void inquiryreply(int hInum, String hIcontent, int hIgroup, int hIindent);
-//	public void inquriydelete(String hInum);
-
-	public ArrayList<InquiryRDto> reply_list();
-	public void reply_delete(InquiryRDto Rdto);
+	public ArrayList<InquiryRDto> reply_list(int hRcnum); //댓글 리스트 보기
 	public void reply_write(InquiryRDto Rdto);
-	public void reply_update(InquiryRDto Rdto);
-	public InquiryRDto reply_Ajax(InquiryRDto Rdto);
+	public void reply_delete(InquiryRDto Rdto);
+	public InquiryRDto admin_inquiryReply_modify(String hRcnum);
+	public void replymodify(String hRcontent, int hRcnum);
+	
 	
 	//faq
 	public ArrayList<FDto> admin_faqlist();

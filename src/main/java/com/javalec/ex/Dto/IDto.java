@@ -8,21 +8,19 @@ import org.springframework.web.multipart.MultipartFile;
 public class IDto {
 	
 	int hInum;
-	String hIid;
+	String hid;
 	String hItitle;
 	String hIcontent;
 	String hIfile;
 	Timestamp hIday;
-	int hIgroup;
-	int hIindent;
 
 	public IDto() {
 		
 	}
 	
-	public IDto(int hInum, String hIid, String hItitle, String hIcontent, String hIfile, Timestamp hIday) {
+	public IDto(int hInum, String hid, String hItitle, String hIcontent, String hIfile, Timestamp hIday) {
 		this.hInum = hInum;
-		this.hIid = hIid;
+		this.hid = hid;
 		this.hItitle = hItitle;
 		this.hIcontent = hIcontent;
 		this.hIfile = hIfile;
@@ -37,12 +35,12 @@ public class IDto {
 		this.hInum = hInum;
 	}
 
-	public String gethIid() {
-		return hIid;
+	public String gethid() {
+		return hid;
 	}
 
-	public void sethIid(String hIid) {
-		this.hIid = hIid;
+	public void sethid(String hid) {
+		this.hid = hid;
 	}
 	
 	public String gethItitle() {
@@ -75,22 +73,6 @@ public class IDto {
 
 	public void sethIday(Timestamp hIday) {
 		this.hIday = hIday;
-	}
-
-	public int gethIgroup() {
-		return hIgroup;
-	}
-
-	public void sethIgroup(int hIgroup) {
-		this.hIgroup = hIgroup;
-	}
-
-	public int gethIindent() {
-		return hIindent;
-	}
-
-	public void sethIindent(int hIindent) {
-		this.hIindent = hIindent;
 	}
 
 	

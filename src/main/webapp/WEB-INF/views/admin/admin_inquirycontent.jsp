@@ -26,7 +26,9 @@
 
 <script type="text/javascript">
 	//html 페이지 모두 호출후에 jquery 실행
-
+	
+	var hRcnum = ${admin_inquirycontent.hInum};
+	
 	$(function() {
 		getreplyList();
 	});
@@ -34,40 +36,82 @@
 	//답글 리스트
 	function getreplyList() {
 
-		$.ajax({
-			type : 'get',
-			url : "./reply_list",
-			dataType : "json",
-			data : {hRcnum}, //hRcnum; 121 $("#formtable").serialize
-			contentType : "application/json; charset=UTF-8",
-			success : function(data) {
-				alert("성공");
-				
-				var html = "";
-				var Rlist = data.length; //list개수를 확인할 수 있다.
-				$("#Rlist").html(Rlist);
-				
-				if(data.length > 0) {
-					for(var i=0; i<data.length; i++){
-					html += "<p id='writeForm'> 담당자 <span> &emsp;" + data[i].hRcontent + "</span></p>";
+		$ .ajax({
+					type : 'get', //http 요청방식 (get,post)
+					url : "./reply_list", //controller에서 호출 url주소
+					dataType : "json", //서버에 보내줄 데이터 타입
+					data : {hRcnum: hRcnum}, //controller로 보낼 데이터
+					contentType : "application/json; charset=UTF-8",
+					success : function(data) {
+
+						var html = "";
+						var Rlist = data.length; //list개수를 확인할 수 있다.
+						$("#Rlist").html(Rlist);
+
+						if (data.length > 0) {
+
+							for (var i = 0; i < data.length; i++) {
+								html += "<p id='writeForm"+ data[i].hRnum +"'> 담당자 <span> &emsp;"
+										+ data[i].hRcontent + "</span></p>";
+							}
+
+						} else {
+							html += "<p> 담당자 <span> 등록된 댓글이 없습니다. </span> </p>";
+						}
+
+						$('#REPLYLIST').html(html);
+
+					},
+					error : function(request, status, error) {
+						alert("실패" + error);
 					}
-					
-				}else {
-					html += "<p> 담당자 <span> 등록된 댓글이 없습니다. </span> </p>";
-				}
-				
-				$('#REPLYLIST').html(html);
-				
-			},
-			error : function(request, status, error) {
-				alert("실패" + error);
-			}
-		});
+				});
 	}
 
 	
+	//답글 쓰기
+	function reply_write(hRnum) {
+		
+		$.ajax({
+			type: 'post',
+			url: "./reply_write",
+			data: $("#reply_Form").serialize(),
+			success: function (data) {
+				alert("답변 달기 완료.");
+				
+				if(data == "success") {
+					getreplyList();
+					$("#hRcontent").val("");
+				}
+			},
+			error:  function(request, status, error) {
+				alert("실패: " + error);
+			}
+		});
+	}
+	
+	
+	//답변 삭제
+	function reply_delete() {
+		
+		$.ajax({
+			type:'post',
+			url: "./reply_delete",
+			data: {hRcnum: hRcnum},
+			success: function (data) {
+				alert("답변 삭제 완료");
+				
+				if(data == "success") {
+					getreplyList();
+				}
+			},
+			error: function(request, status, error) {
+				alert("실패: " + error);
+			}
+		});
+	}
+	
 </script>
-
 </head>
 
 <body>
@@ -90,7 +134,7 @@
 					커뮤니티 </a></li>
 			<li><a href="../member/"><span class="nav2">&emsp;</span>
 					회원관리 </a></li>
-			<li><a href="../noticeboard/admin_noticelist.html"><span
+			<li><a href="../noticeboard/admin_noticelist"><span
 					class="nav3">&emsp;</span> 게시판관리 </a></li>
 			<li><a href="#"><span class="nav4">&emsp;</span> 상품관리 </a></li>
 			</a>
@@ -147,6 +191,7 @@
 			<!-- contents -->
 			<div id="contents">
 				<div id="mypage">
+				<input type="hidden" name="hid">
 					<h2>
 						<strong>1:1문의</strong><span>쟈뎅에 궁금하신 사항을 남겨주시면 답변해드립니다.</span>
 					</h2>
@@ -169,47 +214,44 @@
 						</div>
 
 						<div class="viewContents">${admin_inquirycontent.hIcontent }
-							<img alt="img"
+							<br> <br> <img alt="img"
 								src="../uploadFile/${admin_inquirycontent.hIfile }">
 						</div>
 					</div>
 
-					<form action="" id="replyForm" name="replyForm" method="post">
-						<!-- 답변 -->
-						<div class="answer">
-							<div class="inbox">
-								<div class="aname" id="REPLYLIST">
-									
-								</div>
-								<div class="atxt">
-								
-								</div>
-							</div>
+					<!-- 답변 -->
+					<div class="answer">
+						<div class="inbox">
+							<div class="aname" id="REPLYLIST"></div>
+							<div class="atxt"></div>
 						</div>
-						<!-- //답변 -->
-					</form>
+					</div>
+					<!-- //답변 -->
 
-					<br> <br>
-					<form id="formtable" name="formtable" method="post">
+					<br>
+					<br>
+					
+					<!-- 답변 달기 -->
+					<form id="reply_Form" name="reply_Form" method="post">
 						<div class="checkDiv">
-							<table summary="분류, 제목, 상세내용, 첨부파일 순으로 궁금하신 점을 문의 하실수 있습니다."
-								class="checkTable" border="1" cellspacing="0">
+							<table summary="분류, 제목, 상세내용, 첨부파일 순으로 궁금하신 점을 문의 하실수 있습니다." class="checkTable" border="1" cellspacing="0">
 								<caption>1:1문의</caption>
 								<colgroup>
 									<col width="19%" class="tw30" />
 									<col width="*" />
 								</colgroup>
 								<tbody>
+
 									<tr>
 										<th scope="row"><span>답변 내용</span></th>
-										<td><textarea class="tta" maxlength=1000 id="hRcontent"
-												name="hRcontent" placeholder="댓글을 입력해 주세요."></textarea> <br>
-											<input type="hidden" name="hRcnum"
-											value="${admin_inquirycontent.hInum}"> <input
-											type="hidden" name="hRname"
-											value="${admin_inquirycontent.hIid}"> <!-- 사용자 아이디-->
+										<td>
+										<textarea class="tta" maxlength=1000 id="hRcontent" name="hRcontent" placeholder="댓글을 입력해 주세요."></textarea> 
+										<br>
+										<input type="hidden" name="hRcnum" value="${admin_inquirycontent.hInum}"> <!-- value의 DB는 게시판의 번호로 해야함. (댓글 기능 db의 게시판 번호가 아님) -->
+										<input type="hidden" name="hid2" value="${admin_inquirycontent.hid}">
 										</td>
 									</tr>
+
 								</tbody>
 							</table>
 						</div>
@@ -220,16 +262,13 @@
 								<ul>
 									<li><a href="admin_inquirylist" class="sbtnMini mw">목록</a></li>
 									<li><a href="#" class="writeBtn" onclick="reply_write()">답글달기</a></li>
-									<li><a href="#" class="nbtnbig mw"
-										onclick="reply_modify()">수정</a></li>
-									<li><a href="#" class="nbtnbig mw"
-										onclick="reply_delete()">삭제</a></li>
+									<li><a href="admin_inquiryReply_modify" class="nbtnbig mw">답글 수정</a></li>
+									<li><a href="#" class="nbtnbig mw" onclick="reply_delete()">답글 삭제</a></li>
 								</ul>
 							</div>
 						</div>
-						<!-- //Btn Area -->
 					</form>
-
+					<!-- //Btn Area -->
 
 				</div>
 			</div>

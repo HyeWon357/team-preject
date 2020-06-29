@@ -26,45 +26,48 @@
 <script type="text/javascript" src="../js/respond.min.js"></script>
 <![endif]-->
 <script type="text/javascript">
-//html 페이지 모두 호출후에 jquery 실행
-
-$(function() {
-	getreplyList();
-});
-
-//답글 리스트
-function getreplyList() {
-
-	$.ajax({
-		type : 'get',
-		url : "./reply_list",
-		dataType : "json",
-		data : {}, //hRcnum; 121 $("#formtable").serialize
-		contentType : "application/json; charset=UTF-8",
-		success : function(data) {
-			alert("성공");
-			
-			var html = "";
-			var Rlist = data.length; //list개수를 확인할 수 있다.
-			$("#Rlist").html(Rlist);
-			
-			if(data.length > 0) {
-				for(var i=0; i<data.length; i++){
-				html += "<p id='writeForm'> 담당자 <span> &emsp;" + data[i].hRcontent + "</span></p>";
-				}
-				
-			}else {
-				html += "<p> 담당자 <span> 등록된 댓글이 없습니다. </span> </p>";
-			}
-			
-			$('#REPLYLIST').html(html);
-			
-		},
-		error : function(request, status, error) {
-			alert("실패" + error);
-		}
+	//html 페이지 모두 호출후에 jquery 실행
+	
+	var hRcnum = ${inquiry_content.hInum};
+	
+	$(function() {
+		getreplyList();
 	});
-}
+
+	//답글 리스트
+	function getreplyList() {
+
+		$.ajax({
+					type : 'get', //http 요청방식 (get,post)
+					url : "./reply_list", //controller에서 호출 url주소
+					dataType : "json", //서버에 보내줄 데이터 타입
+					data : {hRcnum: hRcnum}, //controller로 보낼 데이터
+					contentType : "application/json; charset=UTF-8",
+					success : function(data) {
+
+						var html = "";
+						var Rlist = data.length; //list개수를 확인할 수 있다.
+						$("#Rlist").html(Rlist);
+
+						if (data.length > 0) {
+
+							for (var i = 0; i < data.length; i++) {
+								html += "<p id='writeForm"+ data[i].hRnum +"'> 담당자 <span> &emsp;"
+										+ data[i].hRcontent + "</span></p>";
+							}
+
+						} else {
+							html += "<p> 담당자 <span> 등록된 댓글이 없습니다. </span> </p>";
+						}
+
+						$('#REPLYLIST').html(html);
+
+					},
+					error : function(request, status, error) {
+						alert("실패" + error);
+					}
+				});
+	}
 </script>
 </head>
 <body>
@@ -134,19 +137,16 @@ function getreplyList() {
 			clearTimeout(msietimer);
 		}
 
-		
 		//삭제확인
 		function delete_check() {
 
 			if (confirm("정말 삭제하시겠습니까?") == true) { //확인
-				location.href="inquiry_delete?hInum=${inquiry_content.hInum}";
+				location.href = "inquiry_delete?hInum=${inquiry_content.hInum}";
 
 			} else { //취소
 				return;
 			}
 		}
-		
-		
 	</script>
 
 	<div id="allwrap">
@@ -314,7 +314,8 @@ function getreplyList() {
 
 
 								<div class="viewContents">${inquiry_content.hIcontent }
-									<img alt="img" src="../uploadFile/${inquiry_content.hIfile }">
+									<br> <br> <img alt="img"
+										src="../uploadFile/${inquiry_content.hIfile }">
 								</div>
 
 							</div>

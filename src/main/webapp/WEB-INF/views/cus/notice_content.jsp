@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,15 +22,7 @@
 <script type="text/javascript" src="../js/jquery.easing.1.3.js"></script>
 <script type="text/javascript" src="../js/idangerous.swiper-2.1.min.js"></script>
 <script type="text/javascript" src="../js/jquery.anchor.js"></script>
-<!--[if lt IE 9]>
-<script type="text/javascript" src="../js/html5.js"></script>
-<script type="text/javascript" src="../js/respond.min.js"></script>
-<![endif]-->
-<script type="text/javascript">
-	$(document).ready(function() {
 
-	});
-</script>
 </head>
 <body>
 
@@ -273,15 +266,37 @@
 									</colgroup>
 									
 									<tbody>
-										<tr>
-											<th class="pre">PREV</th>
-											<td><a href="#">${notice_content.hNtitle }</a></td>
-										</tr>
-
-										<tr>
-											<th class="next">NEXT</th>
-											<td>${notice_content.hNtitle }</td>
-										</tr>
+										<c:if test="${notice_prev.hNnum == null}">
+											<tr>
+												<th class="pre">PREV</th>
+												<td>이전글이 없습니다.</td>
+												<td> &nbsp; </td>
+											</tr>
+										</c:if>
+										
+										<c:if test="${notice_prev.hNnum != null}">
+											<tr>
+												<th class="pre">PREV</th>
+												<td><a href="notice_content?hNnum=${notice_prev.hNnum}" >${notice_prev.hNtitle}</a></td>
+												<td> &nbsp; </td>
+											</tr>
+										</c:if>
+										
+										<c:if test="${notice_next.hNnum == null}">
+											<tr>
+												<th class="next">NEXT</th>
+												<td>다음글이 없습니다.</td>
+												<td> &nbsp; </td>
+											</tr>
+										</c:if>
+										
+										<c:if test="${notice_next.hNnum != null}">
+											<tr>
+												<th class="next">NEXT</th>
+												<td><a href="notice_content?hNnum=${notice_next.hNnum}" >${notice_next.hNtitle}</a></td></td>
+												<td> &nbsp; </td>
+											</tr>
+										</c:if>
 									</tbody>
 								</table>
 							</div>

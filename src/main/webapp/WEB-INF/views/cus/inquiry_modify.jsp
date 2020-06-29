@@ -306,7 +306,7 @@
 										<tbody>
 											<tr>
 												<th scope="row"><span>작성자</span></th>
-												<td><input type="text" class="wlong" name="hIname" maxlength=20 value="${inquiry_modify.hIname}" readonly/></td>
+												<td><input type="text" class="wlong" name="hid" maxlength=20 value="${inquiry_modify.hid}" readonly/></td>
 											</tr>
 
 											<tr>

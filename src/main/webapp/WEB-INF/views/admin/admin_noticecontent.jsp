@@ -2,6 +2,7 @@
 <%@page import="java.sql.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -145,16 +146,40 @@
 								<col width="100px" />
 								<col width="*" />
 							</colgroup>
-							<tbody>
-								<tr>
-									<th class="pre">PREV</th>
-									<td><a href="#">상품 재입고는 언제 되나요?</a></td>
-								</tr>
 
-								<tr>
-									<th class="next">NEXT</th>
-									<td>다음 글이 없습니다.</td>
-								</tr>
+							<tbody>
+								<c:if test="${notice_prev.hNnum == null}">
+									<tr>
+										<th class="pre">PREV</th>
+										<td>이전글이 없습니다.</td>
+										<td>&nbsp;</td>
+									</tr>
+								</c:if>
+
+								<c:if test="${notice_prev.hNnum != null}">
+									<tr>
+										<th class="pre">PREV</th>
+										<td><a href="admin_noticecontent?hNnum=${notice_prev.hNnum}">${notice_prev.hNtitle}</a></td>
+										<td>&nbsp;</td>
+									</tr>
+								</c:if>
+
+								<c:if test="${notice_next.hNnum == null}">
+									<tr>
+										<th class="next">NEXT</th>
+										<td>다음글이 없습니다.</td>
+										<td>&nbsp;</td>
+									</tr>
+								</c:if>
+
+								<c:if test="${notice_next.hNnum != null}">
+									<tr>
+										<th class="next">NEXT</th>
+										<td><a href="admin_noticecontent?hNnum=${notice_next.hNnum}">${notice_next.hNtitle}</a></td>
+										</td>
+										<td>&nbsp;</td>
+									</tr>
+								</c:if>
 							</tbody>
 						</table>
 					</div>
@@ -166,8 +191,11 @@
 						<div class="bRight">
 							<ul>
 								<li><a href="admin_noticelist" class="sbtnMini mw">목록</a></li>
-								<li><a href="#" class="sbtnMini mw" onclick="delete_check()"> 삭제 </a></li>
-								<li><a href="admin_noticemodify?hNnum=${admin_noticecontent.hNnum }" class="sbtnMini mw"> 수정 </a></li>
+								<li><a href="#" class="sbtnMini mw"
+									onclick="delete_check()"> 삭제 </a></li>
+								<li><a
+									href="admin_noticemodify?hNnum=${admin_noticecontent.hNnum }"
+									class="sbtnMini mw"> 수정 </a></li>
 							</ul>
 						</div>
 					</div>

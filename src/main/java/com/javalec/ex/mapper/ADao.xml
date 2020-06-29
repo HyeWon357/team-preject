@@ -29,6 +29,13 @@
 		update notice set hNtitle=#{param1}, hNcontent=#{param2} where hNnum=#{param3}
 	</update>
 	
+	<select id="notice_prev" resultType="com.javalec.ex.Dto.NDto">
+		select * from notice where hNnum = (select max(hNnum) from notice where hNnum &lt; #{param1})
+   	</select>
+   	
+   	<select id="notice_next" resultType="com.javalec.ex.Dto.NDto">
+   		select * from notice where hNnum = (select min(hNnum) from notice where hNnum &gt; #{param1})
+   	</select>
 	
 	
 	<!-- 1:1문의 -->
@@ -41,16 +48,24 @@
 	</select>
 
 	<select id="reply_list" resultType="com.javalec.ex.Dto.InquiryRDto">
-		select * from inquiryR order by hRday desc
+		select * from inquiryR where hRcnum=#{hRcnum}
 	</select>
 	
+	<insert id="reply_write" parameterType="com.javalec.ex.Dto.InquiryRDto">
+		insert into inquiryR values(inquiryR_seq.nextval, #{hRcnum}, #{hRcontent}, #{hid2}, sysdate)
+	</insert>
+	
 	<delete id="reply_delete" parameterType="com.javalec.ex.Dto.InquiryRDto">
-		delete from inquiryR where hRnum = #{hRnum}
+		delete from inquiryR where hRcnum=#{hRcnum}
 	</delete>
 	
-	<insert id="reply_write" parameterType="com.javalec.ex.Dto.InquiryRDto">
-		insert into inquiryR values (inquiryR_seq.nextval, #{hRcnum}, #{hRcontent}, #{hRname}, sysdate)
-	</insert>
+	<select id="admin_inquiryReply_modify" resultType="com.javalec.ex.Dto.InquiryRDto">
+		select *from inquiryR where hRcnum=#{param1}
+	</select>
+	
+	<update id="replymodify">
+		update notice set hRcontent=#{param1} where hRnum=#{param2}
+	</update>
 	
 	
 	<!-- faq -->

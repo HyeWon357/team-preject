@@ -4,21 +4,21 @@ import java.sql.Timestamp;
 
 public class InquiryRDto {
 	
-	int hRnum;
-	int hRcnum;
-	String hRcontent;
-	String hRname;
-	Timestamp hRday;
+	int hRnum; //댓글 순서번호
+	int hRcnum; //inquiry 게시판 번호
+	String hRcontent; //댓글
+	String hid2; //사용자 아이디
+	Timestamp hRday; //댓글 날짜
 	
 	public InquiryRDto() {
 		
 	}
 	
-	public InquiryRDto(int hRnum, int hRcnum, String hRcontent, String hRname, Timestamp hRday){
+	public InquiryRDto(int hRnum, int hRcnum, String hRcontent, String hid2, Timestamp hRday){
 		this.hRnum = hRnum;
 		this.hRcnum = hRcnum;
 		this.hRcontent = hRcontent;
-		this.hRname = hRname;
+		this.hid2 = hid2;
 		this.hRday = hRday;
 	}
 
@@ -46,12 +46,12 @@ public class InquiryRDto {
 		this.hRcontent = hRcontent;
 	}
 
-	public String gethRname() {
-		return hRname;
+	public String gethid2() {
+		return hid2;
 	}
 
-	public void sethRname(String hRname) {
-		this.hRname = hRname;
+	public void sethid2(String hid2) {
+		this.hid2 = hid2;
 	}
 
 	public Timestamp gethRday() {
@@ -61,7 +61,5 @@ public class InquiryRDto {
 	public void sethRday(Timestamp hRday) {
 		this.hRday = hRday;
 	}
-	
-	
 	
 }

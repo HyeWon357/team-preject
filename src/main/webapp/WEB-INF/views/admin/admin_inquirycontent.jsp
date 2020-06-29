@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -255,6 +256,7 @@
 								</tbody>
 							</table>
 						</div>
+						
 
 						<!-- Btn Area -->
 						<div class="btnArea">
@@ -267,6 +269,55 @@
 								</ul>
 							</div>
 						</div>
+						
+						<!-- 이전다음글 -->
+					<div class="pnDiv web">
+						<table summary="이전다음글을 선택하여 보실 수 있습니다." class="preNext" border="1"
+							cellspacing="0">
+							<caption>이전다음글</caption>
+							<colgroup>
+								<col width="100px" />
+								<col width="*" />
+							</colgroup>
+
+							<tbody>
+								<c:if test="${inquiry_prev.hInum == null}">
+									<tr>
+										<th class="pre">PREV</th>
+										<td>이전글이 없습니다.</td>
+										<td>&nbsp;</td>
+									</tr>
+								</c:if>
+
+								<c:if test="${inquiry_prev.hInum != null}">
+									<tr>
+										<th class="pre">PREV</th>
+										<td><a href="admin_inquirycontent?hInum=${inquiry_prev.hInum}">${inquiry_prev.hItitle}</a></td>
+										<td>&nbsp;</td>
+									</tr>
+								</c:if>
+
+								<c:if test="${inquiry_next.hInum == null}">
+									<tr>
+										<th class="next">NEXT</th>
+										<td>다음글이 없습니다.</td>
+										<td>&nbsp;</td>
+									</tr>
+								</c:if>
+
+								<c:if test="${inquiry_next.hInum != null}">
+									<tr>
+										<th class="next">NEXT</th>
+										<td><a href="admin_inquirycontent?hInum=${inquiry_next.hInum}">${inquiry_next.hItitle}</a></td>
+										</td>
+										<td>&nbsp;</td>
+									</tr>
+								</c:if>
+							</tbody>
+						</table>
+					</div>
+					<!-- //이전다음글 -->
+					
 					</form>
 					<!-- //Btn Area -->
 

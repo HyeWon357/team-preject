@@ -67,6 +67,14 @@
 		update notice set hRcontent=#{param1} where hRnum=#{param2}
 	</update>
 	
+	<select id="inquiry_prev" resultType="com.javalec.ex.Dto.IDto">
+		select * from inquiry where hInum = (select max(hInum) from inquiry where hInum &lt; #{param1})
+   	</select>
+   	
+   	<select id="inquiry_next" resultType="com.javalec.ex.Dto.IDto">
+   		select * from inquiry where hInum = (select min(hInum) from inquiry where hInum &gt; #{param1})
+   	</select>
+	
 	
 	<!-- faq -->
 	<select id="admin_faqlist" resultType="com.javalec.ex.Dto.FDto">

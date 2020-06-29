@@ -114,6 +114,10 @@ public class AdminCustomerController {
 	public String admin_inquirycontent(HttpServletRequest request, Model model) {
 
 		AdminDao dao = sqlSession.getMapper(AdminDao.class);
+		
+		// 이전글, 다음글
+		model.addAttribute("inquiry_prev", dao.inquiry_prev(Integer.parseInt(request.getParameter("hInum"))));
+		model.addAttribute("inquiry_next", dao.inquiry_next(Integer.parseInt(request.getParameter("hInum"))));
 		model.addAttribute("admin_inquirycontent", dao.admin_inquirycontent(request.getParameter("hInum")));
 		return "admin/admin_inquirycontent";
 	}

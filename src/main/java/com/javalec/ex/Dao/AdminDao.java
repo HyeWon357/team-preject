@@ -32,6 +32,10 @@ public interface AdminDao {
 	public InquiryRDto admin_inquiryReply_modify(String hRcnum);
 	public void replymodify(String hRcontent, int hRcnum);
 	
+	//이전글, 다음글
+	public IDto inquiry_prev(int hInum);
+	public IDto inquiry_next(int hInum);
+	
 	
 	//faq
 	public ArrayList<FDto> admin_faqlist();

@@ -29,7 +29,7 @@ public interface AdminDao {
 	public ArrayList<InquiryRDto> reply_list(int hRcnum); //댓글 리스트 보기
 	public void reply_write(InquiryRDto Rdto);
 	public void reply_delete(InquiryRDto Rdto);
-	public InquiryRDto admin_inquiryReply_modify(String hRcnum);
+	public InquiryRDto admin_inquiryReply_modify(String hRnum);
 	public void replymodify(String hRcontent, int hRcnum);
 	
 	//이전글, 다음글

@@ -1,3 +1,4 @@
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -128,9 +129,20 @@
 								<tr>
 									<td class="tnone">${dto.hNnum}</td>
 									<td class="left"><a href="admin_noticecontent?hNnum=${dto.hNnum}">${dto.hNtitle}</a>
-										<img src="../images/ico/ico_new.gif" alt="NEW" />
-									</td>
-									<td><c:out value="${dto.hNday }" /></td>
+										<!-- 현재 날짜 -->
+										<jsp:useBean id="now" class="java.util.Date" />
+										<!-- 오늘 -->
+										<c:set var="today" value="<%=new Date() %>" /> <fmt:formatDate value="${today}" pattern="yyyy-MM-dd" var="today" /> <!-- 하루 전 -->
+										<c:set var="oneAgo" value="<%=new Date(new Date().getTime() - 60*60*24*1000)%>" />
+										<fmt:formatDate value="${oneAgo}" pattern="yyyy-MM-dd" var="oneAgo" /> <c:choose>
+											<c:when test="${dto.hNday <= oneAgo}">
+											</c:when>
+
+											<c:when test="${dto.hNday > oneAgo}">
+												<img src="../images/ico/ico_new.gif" alt="NEW" />
+											</c:when>
+										</c:choose></td>
+										<td><fmt:formatDate value="${dto.hNday}" pattern="yyyy-MM-dd"/></td>
 									<td class="tnone right">${dto.hNhit }</td>
 								</tr>
 							</c:forEach>

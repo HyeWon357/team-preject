@@ -60,7 +60,7 @@
 	</delete>
 	
 	<select id="admin_inquiryReply_modify" resultType="com.javalec.ex.Dto.InquiryRDto">
-		select *from inquiryR where hRcnum=#{param1}
+		select * from inquiryR where hRnum=#{param1}
 	</select>
 	
 	<update id="replymodify">

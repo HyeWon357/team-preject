@@ -44,12 +44,6 @@ public class AdminCustomerController {
 	@RequestMapping("admin/admin_noticecontent")
 	public String admin_noticecontent(HttpServletRequest request, Model model) {
 
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		Calendar cal = Calendar.getInstance();
-		cal.add(Calendar.DAY_OF_MONTH, -2); // 2일간 보이도록 하기 위해서
-		String nowday = format.format(cal.getTime());
-		model.addAttribute("nowday", nowday);
-
 		AdminDao dao = sqlSession.getMapper(AdminDao.class);
 		model.addAttribute("admin_noticecontent", dao.admin_noticecontent(request.getParameter("hNnum")));
 		// 관리자에서 uphit은 제외.
@@ -153,6 +147,7 @@ public class AdminCustomerController {
 		
 		AdminDao dao = sqlSession.getMapper(AdminDao.class);
 		model.addAttribute("admin_inquiryReply_modify", dao.admin_inquiryReply_modify(request.getParameter("hRnum")));
+		System.out.println("hRnum: " + request.getParameter("hRnum"));
 		return "admin/admin_inquiryReply_modify";
 	}
 	

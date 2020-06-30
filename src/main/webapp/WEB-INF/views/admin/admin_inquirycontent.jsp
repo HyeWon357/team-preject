@@ -112,7 +112,19 @@
 		});
 	}
 	
+	
+	
+	
 </script>
+
+<style type="text/css">
+	.name {
+		width: 500px;
+		height: 15px;
+		margin-right: 10px;
+		text-align: right;
+	}
+</style>
 </head>
 
 <body>
@@ -202,6 +214,9 @@
 								<ul>
 									<li class="cate">[기타]</li>
 									<li>${admin_inquirycontent.hItitle }</li>
+									
+									<li class="name">작성자ID: </li> &nbsp;
+									<li>${admin_inquirycontent.hid}</li>
 								</ul>
 							</div>
 							<div class="day">
